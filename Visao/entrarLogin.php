@@ -17,7 +17,7 @@ $id_usuario = $_SESSION['id_usuario'];
         <div class="container login" style="padding: 30px;">
             <div class="col-md-4 col-md-offset-4 well-lg login">
                 <div class="formLogin">
-                    <img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png" style="margin-right: auto; margin-left: auto;" alt="TESTE"/>
+                    <img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png"/>
                     <form name="FrmLogin" method="post" action="http://localhost/SeboEletronicov2.0/Dao/AutenticaUsuario.php" id="FrmLogin" class="form-horizontal" role="form">
                         <input name="email" type="text" class="form-control" placeholder="E-mail" required/>
                         <input name="senha" type="password" class="form-control" placeholder="Senha"  maxlength="6" required/>

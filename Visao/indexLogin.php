@@ -18,20 +18,31 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             <title>Sebo Eletrônico</title>
         </head>
         
-        <body>            
-            <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
-
-            <div align="center">
-                <font size="+3">Seja Bem Vindo ao Sebo Eletrônico!</font><br /><br /><br />
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus pharetra justo et varius. Integer molestie massa nunc, 
-                aliquet rhoncus orci gravida in. Praesent a nulla sem. Sed fermentum dui eget risus adipiscing dapibus. Quisque a orci risus. 
-                Proin ultrices mauris quam, non lacinia metus feugiat eget. Proin sodales sagittis tristique. Sed commodo sem sit amet odio 
-                porttitor egestas. Aliquam erat volutpat. Nullam mollis a mi a sollicitudin. Suspendisse elit augue, pharetra sit amet orci non, 
-                imperdiet luctus urna. Cras a elementum dolor. Donec in ante sapien.
-                </div><br /><br /><br />
-                <img src="http://localhost/SeboEletronicov2.0/Visao/img/Login.png" class="img3"/>
+        <body>
+            <div class="container">
+                <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
+                <br><br><br><br><br>
+                <div align="center">
+                    <font size="+3" style="font-family: verdana, sans-serif;">Seja Bem Vindo ao Sebo Eletrônico!</font>
+                </div>
+                <br>
+                <table>
+                    <tr>
+                        <td  widht="50%" style="padding: 50px"><img src="http://localhost/SeboEletronicov2.0/Visao/img/Login.png" class="img3" /></td>
+                        <td  widht="50%" style="text-align: justify;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus pharetra justo et varius. Integer molestie massa nunc, 
+                            aliquet rhoncus orci gravida in. Praesent a nulla sem. Sed fermentum dui eget risus adipiscing dapibus. Quisque a orci risus. 
+                            Proin ultrices mauris quam, non lacinia metus feugiat eget. Proin sodales sagittis tristique. Sed commodo sem sit amet odio 
+                            porttitor egestas. Aliquam erat volutpat. Nullam mollis a mi a sollicitudin. Suspendisse elit augue, pharetra sit amet orci non, 
+                            imperdiet luctus urna. Cras a elementum dolor. Donec in ante sapien.
+                        </td>
+                    </tr>
+                </table>
+                    
+               
+                
+                        
+                
             </div>
         </body>
-        
     </html>
