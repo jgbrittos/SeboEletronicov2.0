@@ -38,11 +38,6 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                         </td>
                     </tr>
                 </table>
-                    
-               
-                
-                        
-                
             </div>
         </body>
     </html>
