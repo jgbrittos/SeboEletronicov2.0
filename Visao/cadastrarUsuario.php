@@ -14,17 +14,12 @@ $id_usuario = $_SESSION['id_usuario'];
     </head>
 
     <body>
-        <!--        <div id="header">
-                    <div id="logo"><img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png" class="imgHeader"/></div>
-                </div>-->
-
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="../index.php">Sair</a></li>
-                            <!--<a class="navbar-brand"><img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png"/></a>-->
                         </ul>
                     </div>
                 </div>

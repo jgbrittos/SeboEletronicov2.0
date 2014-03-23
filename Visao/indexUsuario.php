@@ -14,9 +14,7 @@
    <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
     
    <div id="mainmenu">
-        <button class="button" onclick="altera();">Alterar</button>       
-        <button class="button" onclick="deleta();">Deletar</button> 
-        <button class="button" onclick="pesquisa();">Pesquisar</button>
+        
         <img src="http://localhost/SeboEletronicov2.0/Visao/img/livroUsuario.png" class="img2"/>
    </div>
     
