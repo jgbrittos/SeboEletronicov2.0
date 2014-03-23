@@ -49,7 +49,7 @@ function login(){
     window.location="http://localhost/SeboEletronicov2.0/Visao/entrarLogin.php";
 }
 function sair(){
-    window.location="http://localhost/SeboEletronicov2.0/Visao/site.php";
+    window.location="http://localhost/SeboEletronicov2.0/index.php";
 }
 function loginsuccessfully(id){
     window.location='http://localhost/SeboEletronicov2.0/Visao/indexLogin.php?idUser=id';
