@@ -59,8 +59,6 @@ switch($_POST['tipo']){
                       <?php
                     break;
       case "pesquisar": $nome = $_POST['nome'];
-                        
-                        
                       ?>
                             <script language = "Javascript">
                             window.location="http://localhost/SeboEletronicov2.0/Visao/usuarioPesquisado.php?nome=<?php echo $nome?>";

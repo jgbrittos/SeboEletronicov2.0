@@ -33,7 +33,7 @@ $id_usuario = $_SESSION['id_usuario'];
                     <form name="Insere Dados" method="post" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeForm.php" class="form-horizontal" role="form">
                         <input name="nome" type="text" class="form-control" placeholder="Nome" required/>
                         <input name="email" type="text" class="form-control" placeholder="E-mail" required/>
-                        <input name="telefone" type="text" class="form-control" placeholder="Telefone" required/>
+                        <input name="telefone" type="text" class="form-control" maxlength="8" placeholder="Telefone" required/>
                         <input name="senha[]" type="password" class="form-control" placeholder="Senha"  maxlength="6" required/>
                         <input name="senha[]" type="password" class="form-control" placeholder="Confirmar senha"  maxlength="6" required/>
                         <input type="hidden" name="tipo" value="cadastrar"/>
