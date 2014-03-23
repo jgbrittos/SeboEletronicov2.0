@@ -27,7 +27,7 @@ $id_usuario = $_SESSION['id_usuario'];
     <br/>
     <br/>
 
-        <form name="loginform" method="post" action="http://localhost/DSW_Sebo_Eletronico/SeboEletronicov2.0/Dao/autenticacaoUsuario.php">
+        <form name="loginform" method="post" action="http://localhost/SeboEletronicov2.0/Dao/autenticacaoUsuario.php">
             <table class='insr'>
 
                 <tr>

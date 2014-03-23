@@ -1,8 +1,8 @@
 <?php
     
         $server = "localhost";
-        $username = "SeboEletronico";
-        $senha = "sebo";
+        $username = "root";
+        $senha = "";
         $dbcon = mysql_connect($server, $username, $senha);
         
         if(!$dbcon){
