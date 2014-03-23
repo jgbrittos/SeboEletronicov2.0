@@ -54,7 +54,7 @@ switch($_POST['tipo']){
                             </script>   
                             
                             <script language = "Javascript">
-                                window.location="http://localhost/SeboEletronicov2.0/Visao/site.php";
+                                window.location="http://localhost/SeboEletronicov2.0/index.php";
                             </script>
                       <?php
                     break;
