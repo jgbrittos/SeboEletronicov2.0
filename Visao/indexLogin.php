@@ -11,43 +11,15 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             <link rel="stylesheet" href="Css/bootstrap.3.0.3/bootstrap.css"/>
             <link rel="stylesheet" href="Css/todc-bootstrap.3/todcBootstrap.3.css"/>
             <link rel="stylesheet" href="Css/estilo.css"/>
+            <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
+            <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
             <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
 
             <title>Sebo Eletrônico</title>
         </head>
         
         <body>            
-            <nav class="navbar navbar-inverse">
-                <div class="container">
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="#" onclick="home();">
-                                    Home
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav">
-                            <li><a href="#" onclick="user();">
-                                    Usuário
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav">
-                            <li><a href="#" onclick="livro();">
-                                    Livro
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href="../index.php">Sair</a></li>
-                                <!--<a class="navbar-brand"><img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png"/></a>-->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
 
             <div align="center">
                 <font size="+3">Seja Bem Vindo ao Sebo Eletrônico!</font><br /><br /><br />
