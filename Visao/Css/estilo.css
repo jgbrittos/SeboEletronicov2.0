@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'open sans';
+    src: url('../../fonts/OpenSans-Light.ttf');
+}
+.form-group{
+    margin-bottom: 10px !important;
+}
+blockquote{
+    text-align: justify;
+    background: #F7F7F7;
+    word-wrap: break-word; 
+}
+.login{
+    padding: 5px 20px 0;
+}
+.login p{
+    margin-top: 20px;
+}
+.login h1, .login h2, .login h4{
+    font-family:'open sans';
+}
+.login h4{
+    margin: 20px 0 0;
+}
+.login .formLogin{
+    background: #F7F7F7;
+    padding: 40px 50px 50px;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login .formLogin img{
+    margin-bottom: 30px;
+}
+.login .formLogin .form-control{
+    font-size: 16px;
+    padding: 19px 10px;
+    margin-bottom: 10px;
+}
+nav{
+    border: none !important;
+}
+.acompanhamento h5 {
+    margin-top: 0;
+}
+
+.acompanhamento .btnXsCadastrar {
+    margin-top: 9px;
+}
+.acompanhamento .form-group{
+    margin-bottom: 10px;
+}
+.acompanhamento hr{
+    margin-bottom: 70px;
+}
+.acompanhamento h2 small{
+    font-size: 16px;
+}
+.acompanhamento .btnCadRecurso{
+    margin-top: 70px;
+}
+.acompanhamento .scrollable, .perfil .scrollable{
+    max-height: 300px;
+    overflow: auto;
+}
+.cadRecurso .btn-group{
+    margin: 0  0 10px;
+}
+.cadRecurso .btn-group:last-child{
+    margin: 10px  0 10px;
+}
+.cadRecurso .form-control{
+    margin-bottom: 10px;
+}
+.listaRecursos h5{
+    margin-top: 0;
+}
+.listaRecursos .table{
+    margin-bottom: 0;
+}
+.listaRecursos #modalVerNaIntegra .glyphicon {
+    width: 25px;
+}
+.listaRecursos #modalVerNaIntegra .modal-header {
+     padding-left: 8px;
+ }
+.listaRecursos #modalVerNaIntegra .modal-body {
+    max-height: 400px;
+    overflow: auto;
+    padding: 0;
+}
+.listaRecursos #accordion .panel-default{
+    border: 1px solid #F7F7F7;
+    background: #FAFAFA;
+}
+.listaRecursos #accordion .table > tbody > tr > td{
+    border-top: 1px solid transparent;
+}
+.listaRecursos #accordion .panel-heading .h4{
+    width: calc(100% - 65px);
+    float: left;
+}
+.listaRecursos #accordion .table > tbody > tr > td > p{
+    padding-top: 3px;
+    margin-bottom: 0;
+}
+.listaRecursos #accordion span{
+    cursor: pointer;
+    display: inline;
+    margin: 0 auto;
+}
+.listaRecursos #accordion h4 a{
+    min-height: 48px;
+}
+.listaRecursos #accordion .verIntegra{
+    cursor: pointer;
+}
+.listaRecursos #accordion .btn-xs{
+    margin-top: 15px;
+}
+.listaRecursos #accordion .panel-heading{
+    min-height: 50px;
+    background: #F3F3F3;
+}
+.listaRecursos #accordion .panel-body{
+    padding-top: 0;
+}
+.listaRecursos #accordion .btnOpcaoRecurso{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.listaRecursos #accordion .alert{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.listaRecursos .btnOpcaoRecurso img{
+    margin-bottom: 5px;
+}
+#aderirReplica .modal-body p{
+    text-align: justify;
+}
+.replica h4{
+    margin-top: 0; !important
+}
+.replica blockquote{
+   text-align: justify  ;
+}
+.replica .scrollable{
+    max-height: 400px;
+    overflow: auto;
+}
+.perfil h4, .sugestao h4{
+    margin-top: 0;
+}
+.recurso .popover{
+    z-index: 0;
+}
+.recurso .form-group{
+    margin-bottom: 10px;
+}
+#instrucoes ul li{
+    list-style-type: upper-alpha;
+}
+#instrucoes ul li ul li{
+    list-style-type: square;
+    margin-top: 10px;
+}
