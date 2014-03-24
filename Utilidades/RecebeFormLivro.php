@@ -21,12 +21,12 @@ switch ($_POST['tipo']) {
 
 
         if (!empty($salvo)) {
-            echo "<script>altert('Livro cadastrado com sucesso!')</script>";
+            echo "<script>alert('Livro cadastrado com sucesso!')</script>";
         } else {
             echo "<script>('Falha ao cadastrar o livro, tente novamente.')</script>";
         }
 
-        echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/indexLivro.php';</script>";
+        echo "<script>window.location='http://localhost/SeboEletronicov2.0/indexLogin.php';</script>";
 
         break;
 
@@ -60,7 +60,7 @@ switch ($_POST['tipo']) {
         $estadoUsado = $_POST['usado'];
         $disponibilidadeVenda = $_POST['venda'];
         $disponibilidadeTroca = $_POST['troca'];
- 
+        
         $listaLivros = LivroControlador::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
         $idLivro = $listaLivros['id_livro'];
         ?>

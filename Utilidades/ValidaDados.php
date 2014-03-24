@@ -15,7 +15,7 @@ class ValidaDados {
         
         public function validaNome($nome){
 
-            $caracteresValidos = '. abcdefghijklmnopqrstuvwxyzçãõáíóúàòìù';
+            $caracteresValidos = '. abcdefghijklmnopqrstuvwxyzçãõáíóúàòìùéèê';
             
             for ($i = 0; $i < strlen($nome); $i++) {
                 $char = stripos($caracteresValidos, $nome[$i]);

@@ -1,5 +1,4 @@
 <?php
-
 include "../Utilidades/ConexaoComBanco.php";
 
 class LivroDao {
@@ -15,7 +14,6 @@ class LivroDao {
     }
 
     public function pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca){
-
         if(empty($disponibilidadeTroca) && !empty($disponibilidadeVenda)){
             if(empty($estadoNovo) && !empty($estadoUsado)){
                 $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."' 
@@ -44,7 +42,6 @@ class LivroDao {
         }
         
         return $listaLivros;
-        
     }
     
     public function getLivroById($id){

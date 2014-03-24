@@ -14,16 +14,15 @@
         <div class="container">
             <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
             <br><br><br>
-        </div>
 
-        <div class="center-block" style="width: 68.66666666666667%;">
+            <div class="center-block" style="width: 68.66666666666667%;">
             <h2>Pesquisa de livros</h2>
             <br><br><br>
             <form class="form-horizontal" name="FrmPesquisaLivro" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeFormLivro.php" method="post" role="form">
                 <div class="form-group">
                     <label for="titulo" class="col-sm-2 control-label">Título</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control " name="titulo" id="titulo" placeholder="Título do livro" />
+                        <input type="text" class="form-control " name="titulo" id="titulo" placeholder="Título do livro" required/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -34,7 +33,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="classificacao" class="col-sm-2 control-label">Classificação</label>
+                    <label for="classificacao" class="col-sm-2 control-label">Tipo(s) de operação</label>
                     <div class="col-sm-10">
                         <input type="checkbox" name="venda" value="venda"/> Venda
                         <input type="checkbox" name="troca" value="troca"/>    Troca<br/>
@@ -51,6 +50,8 @@
                     </div>
                 </div>
             </form>
+        </div>
+            
         </div>
     </body>
 </html>
