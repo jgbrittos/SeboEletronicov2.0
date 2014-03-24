@@ -74,15 +74,14 @@ class LivroDao {
         $livros = array();
         
         while($registro = mysql_fetch_assoc($result) ) {
-            $livros[]=$registro;         
+            array_push($livros, $registro);
 	}
-        
-        if(!(empty($livros))){
+    
+        if(count($livros) == 0){  
             return false;
         }
         
         return $livros;
-     
     }
     
     public function getAllLivro(){

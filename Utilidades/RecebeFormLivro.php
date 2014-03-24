@@ -1,75 +1,85 @@
 <?php
 include_once '../Controle/LivroControlador.php';
-//require_once '';
 
-switch ($_POST['tipo']) {
+if(!empty($_POST['tipo'])) {
+    switch ($_POST['tipo']) {
+        case "cadastraLivro":
+            $titulo = $_POST['titulo'];
+            $autor = $_POST['autor'];
+            $editora = $_POST['editora'];
+            $edicao = $_POST['edicao'];
+            if(empty($_POST['venda']) && empty($_POST['troca'])){
+                $venda = "venda";
+                $troca = "troca";
+            }elseif(empty($_POST['venda']) && !empty($_POST['troca'])){
+                $troca = $_POST['troca'];
+                $venda = "";
+            }elseif(empty($_POST['troca']) && !empty($_POST['venda'])){
+                $venda = $_POST['venda'];
+                $troca = "";
+            }else{
+                $venda = $_POST['venda'];
+                $troca = $_POST['troca'];
+            }
+            $genero = $_POST['genero'];
+            $estado = $_POST['estado'];
+            $descricao = $_POST['descricao'];
+            $id_dono = $_POST['id_dono'];
 
-    case "cadastraLivro":
-        $titulo = $_POST['titulo'];
-        $autor = $_POST['autor'];
-        $editora = $_POST['editora'];
-        $edicao = $_POST['edicao'];
-        $venda = $_POST['venda'];
-        $troca = $_POST['troca'];
-        $genero = $_POST['genero'];
-        $estado = $_POST['estado'];
-        $descricao = $_POST['descricao'];
-        $id_dono = $_POST['id_dono'];
+
+            $salvo = LivroControlador::salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono);
 
 
-        $salvo = LivroControlador::salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono);
+            if (!empty($salvo)) {
+                echo "<script>alert('Livro cadastrado com sucesso!')</script>";
+            } else {
+                echo "<script>('Falha ao cadastrar o livro, tente novamente.')</script>";
+            }
 
+            echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/indexLogin.php';</script>";
 
-        if (!empty($salvo)) {
-            echo "<script>alert('Livro cadastrado com sucesso!')</script>";
-        } else {
-            echo "<script>('Falha ao cadastrar o livro, tente novamente.')</script>";
-        }
+            break;
 
-        echo "<script>window.location='http://localhost/SeboEletronicov2.0/indexLogin.php';</script>";
+        case "alterarLivro":
+            $titulo = $_POST['titulo'];
+            $autor = $_POST['autor'];
+            $editora = $_POST['editora'];
+            $edicao = $_POST['edicao'];
+            $venda = $_POST['venda'];
+            $troca = $_POST['troca'];
+            $genero = $_POST['genero'];
+            $estado = $_POST['estado'];
+            $descricao = $_POST['descricao'];
+            $id_dono = $_POST['id_dono'];
+            $id = $_POST['id'];
 
-        break;
+            LivroControlador::alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id, $id_dono);
+            ?>
+            <script language="Javascript" type="text/javascript">
+                alert("Livro alterado com sucesso!!");
+            </script>  
 
-    case "alterarLivro":
-        $titulo = $_POST['titulo'];
-        $autor = $_POST['autor'];
-        $editora = $_POST['editora'];
-        $edicao = $_POST['edicao'];
-        $venda = $_POST['venda'];
-        $troca = $_POST['troca'];
-        $genero = $_POST['genero'];
-        $estado = $_POST['estado'];
-        $descricao = $_POST['descricao'];
-        $id_dono = $_POST['id_dono'];
-        $id = $_POST['id'];
+            <script language = "Javascript">
+                window.location = "http://localhost/SeboEletronicov2.0/Visao/indexLivro.php";
+            </script><?php
+            break;
 
-        LivroControlador::alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id, $id_dono);
-        ?>
-        <script language="Javascript" type="text/javascript">
-            alert("Livro alterado com sucesso!!");
-        </script>  
+        case "pesquisaLivro":
+            $titulo = $_POST['titulo'];
+            $estadoNovo = $_POST['novo'];
+            $estadoUsado = $_POST['usado'];
+            $disponibilidadeVenda = $_POST['venda'];
+            $disponibilidadeTroca = $_POST['troca'];
 
-        <script language = "Javascript">
-            window.location = "http://localhost/SeboEletronicov2.0/Visao/indexLivro.php";
-        </script><?php
-        break;
-
-    case "pesquisaLivro":
-        $titulo = $_POST['titulo'];
-        $estadoNovo = $_POST['novo'];
-        $estadoUsado = $_POST['usado'];
-        $disponibilidadeVenda = $_POST['venda'];
-        $disponibilidadeTroca = $_POST['troca'];
-        
-        $listaLivros = LivroControlador::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
-        $idLivro = $listaLivros['id_livro'];
-        ?>
-        <script language = "Javascript">
-            window.location = "http://localhost/SeboEletronicov2.0/Visao/listaDeLivros.php?livros=<?php echo $idLivro ?>";
-        </script><?php
-        break;
+            $listaLivros = LivroControlador::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
+            $idLivro = $listaLivros['id_livro'];
+            ?>
+            <script language = "Javascript">
+                window.location = "http://localhost/SeboEletronicov2.0/Visao/listaDeLivros.php?livros=<?php echo $idLivro ?>";
+            </script><?php
+            break;
+    }
 }
-
 if ($_REQUEST['id_livro']) {
     $idLivro = $_REQUEST['id_livro'];
     LivroControlador::deletaLivro($idLivro);
@@ -79,7 +89,7 @@ if ($_REQUEST['id_livro']) {
     </script>
 
     <script language = "Javascript">
-        window.location = "http://localhost/SeboEletronicov2.0/Visao/indexLivro.php";
+        window.location = "http://localhost/SeboEletronicov2.0/Visao/meusLivros.php";
     </script><?php
 }
 ?>

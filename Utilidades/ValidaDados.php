@@ -2,7 +2,6 @@
 
 class ValidaDados {
 
-    
         public function validaCamposNulos($parametro){
             return !(empty($parametro));
             //retorna verdadeiro caso a variavel esteja vazia

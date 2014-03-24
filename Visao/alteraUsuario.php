@@ -1,8 +1,9 @@
 <?php
 session_start();
+include '../Controle/UsuarioControlador.php';
+
 $id_usuario = $_SESSION['id_usuario'];
 $senhaFinal = $_SESSION['senha'];
-include '../Controle/UsuarioControlador.php';
 
 $cadastro = UsuarioControlador::checaCadastroId($id_usuario);
 $textoInformativo = "Restaurar dados serve para redefinir os dados alterados não salvos aos que eram antes.";
