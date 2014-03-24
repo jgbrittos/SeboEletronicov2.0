@@ -4,13 +4,15 @@
         <link rel="stylesheet" href="Css/bootstrap.3.0.3/bootstrap.css"/>
         <link rel="stylesheet" href="Css/todc-bootstrap.3/todcBootstrap.3.css"/>
         <link rel="stylesheet" href="Css/estilo.css"/>
+        <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
+        <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
         <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
         <title>Sebo Eletrônico</title>
 
     </head>
     <body>
         <div class="container">
-            <?php include_once '../Utilidades/BarraNavegacao.php';?>
+            <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
             <br><br><br>
         </div>
 
