@@ -3,7 +3,7 @@
 include '../Controle/LivroControlador.php';
 $id = $_REQUEST['livros'];
 
-$listaLivros = LivroControlador::getLivroById($id);
+$valor = LivroControlador::getLivroById($id);
 
 ?>
 
@@ -40,7 +40,7 @@ $listaLivros = LivroControlador::getLivroById($id);
                 </thead>
                 <tbody>
                     <?php
-                    if ($listaLivros) {
+                    if ($valor) {
                         //foreach ($listaLivros as $chave => $valor) {
                             ?>  
                             <tr>
