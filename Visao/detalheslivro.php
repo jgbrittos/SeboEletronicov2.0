@@ -6,15 +6,21 @@ $id_usuario = $_SESSION['id_usuario'];
 <html>
     <head>	
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="http://localhost/SeboEletronicov2.0/Visao/css/UsuarioStyle.css" type="text/css" media="all">
-        <link rel="stylesheet" href="http://localhost/SeboEletronicov2.0/Visao/css/main.css" type="text/css" media="all">
-        <link rel="shortcut icon" href="http://localhost/SeboEletronicov2.0/Visao/img/android.ico">
+        <link rel="stylesheet" href="Css/estilo.css"/>
+        <link rel="stylesheet" href="Css/bootstrap.3.0.3/bootstrap.css"/>
+        <link rel="stylesheet" href="Css/todc-bootstrap.3/todcBootstrap.3.css"/>
+        <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
+        <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
         <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
 
         <title>Sebo Eletronico</title>
 
     </head>
     <body>
+        <div class="container">
+            <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
+            <br><br><br><br>
+        </div>
         <?php
         $_POST['mural'];
         $_POST['nome_comprador'];
