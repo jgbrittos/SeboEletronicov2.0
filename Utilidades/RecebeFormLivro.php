@@ -66,13 +66,37 @@ if(!empty($_POST['tipo'])) {
 
         case "pesquisaLivro":
             $titulo = $_POST['titulo'];
-            $estadoNovo = $_POST['novo'];
-            $estadoUsado = $_POST['usado'];
-            $disponibilidadeVenda = $_POST['venda'];
-            $disponibilidadeTroca = $_POST['troca'];
+            if(empty($_POST['novo']) && empty($_POST['usado'])){
+                $estadoNovo = "novo";
+                $estadoUsado = "usado";
+            }elseif(empty($_POST['novo']) && !empty($_POST['usado'])){
+                $estadoUsado = $_POST['usado'];
+                $estadoNovo = "";
+            }elseif(empty($_POST['usado']) && !empty($_POST['novo'])){
+                $estadoNovo = $_POST['novo'];
+                $estadoUsado = "";
+            }else{
+                $estadoNovo = $_POST['novo'];
+                $estadoUsado = $_POST['usado'];
+            }
 
+            if(empty($_POST['venda']) && empty($_POST['troca'])){
+                $disponibilidadeVenda = "venda";
+                $disponibilidadeTroca = "troca";
+            }elseif(empty($_POST['venda']) && !empty($_POST['troca'])){
+                $disponibilidadeTroca = $_POST['troca'];
+                $disponibilidadeVenda = "";
+            }elseif(empty($_POST['troca']) && !empty($_POST['venda'])){
+                $disponibilidadeVenda = $_POST['venda'];
+                $disponibilidadeTroca = "";
+            }else{
+                $disponibilidadeVenda = $_POST['venda'];
+                $disponibilidadeTroca = $_POST['troca'];
+            }
+            
             $listaLivros = LivroControlador::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
             $idLivro = $listaLivros['id_livro'];
+            
             ?>
             <script language = "Javascript">
                 window.location = "http://localhost/SeboEletronicov2.0/Visao/listaDeLivros.php?livros=<?php echo $idLivro ?>";

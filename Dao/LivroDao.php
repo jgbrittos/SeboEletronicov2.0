@@ -37,7 +37,7 @@ class LivroDao {
         $lista = mysql_query($sql);
         $listaLivros = mysql_fetch_array($lista);
         
-        if(!(empty($listaLivros))){
+        if(count($listaLivros) == 0){
             return false;
         }
         
