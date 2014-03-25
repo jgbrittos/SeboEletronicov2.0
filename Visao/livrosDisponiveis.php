@@ -29,29 +29,38 @@ $listaLivros = LivroControlador::getAllLivro($id);
                         <p>Aqui você pode acompanhar todos os livros disponíveis para venda e troca.</p>
                     </div>
                     <div class="row">
-                        <?php foreach ($listaLivros as $chave => $valor) { ?>              
-                        <div class="col-6 col-sm-6 col-lg-4" style="width: 292px; height: 297px;">
-                                <h3><?php echo $valor['titulo_livro'] ?></h3>
-                                <p style="text-align: justify">
-                                    <?php 
-                                        if(empty($valor['descricao_livro'])){
-                                            echo "Descrição indisponível.";
-                                        }else{
-                                            if(strlen($valor['descricao_livro']) <= 100){
-                                                echo $valor['descricao_livro'];
-                                            }else{
-                                                echo substr($valor['descricao_livro'], 0, 100) . "(...)";
+                        <?php 
+                            if ($listaLivros) {
+                                foreach ($listaLivros as $chave => $valor) { ?>              
+                                    <div class="col-6 col-sm-6 col-lg-4" style="width: 292px; height: 297px;">
+                                        <h3><?php echo $valor['titulo_livro'] ?></h3>
+                                        <p style="text-align: justify">
+                                            <?php
+                                            if (empty($valor['descricao_livro'])) {
+                                                echo "Descrição indisponível.";
+                                            } else {
+                                                if (strlen($valor['descricao_livro']) <= 100) {
+                                                    echo $valor['descricao_livro'];
+                                                } else {
+                                                    echo substr($valor['descricao_livro'], 0, 100) . "(...)";
+                                                }
                                             }
-                                        }
-                                    ?>
-                                </p>
-                                <p><a class="btn btn-default" href="#" role="button" onclick="window.location='http://localhost/SeboEletronicov2.0/Visao/detalhesLivro.php?id_livro=<?php echo $valor['id_livro']?>'">Ver detalhes »</a></p>
-                            </div>
-                        <?php } ?>
+                                            ?>
+                                        </p>
+                                        <p><a class="btn btn-default" href="#" role="button" onclick="window.location = 'http://localhost/SeboEletronicov2.0/Visao/detalhesLivro.php?id_livro=<?php echo $valor['id_livro'] ?>'">Ver detalhes »</a></p>
+                                    </div>
+                        <?php 
+                                }
+                            }else{
+                        ?>
+                        <div class="alert alert-info">Ops! Parece que ainda não existe nenhum livro cadastrado no sistema!</div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
-        <?php include_once '../Utilidades/Rodape.php'; ?>
+            <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
     </body>
 </html>
