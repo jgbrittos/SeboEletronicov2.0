@@ -24,6 +24,7 @@
                     </form>
                 </div>
             </div>
+        <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
     </body>
 </html>

@@ -103,6 +103,7 @@ $listaLivros = LivroControlador::getLivroByIdUsuario($id);
                 <?php
             }
             ?>
+        <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
     </body>
 </html>

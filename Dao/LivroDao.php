@@ -84,17 +84,17 @@ class LivroDao {
         return $livros;
     }
     
-    public function getAllLivro(){
-        $sql = "SELECT * FROM livro";
+    public function getAllLivro($id_dono){
+        $sql = "SELECT * FROM livro WHERE id_dono <> '".$id_dono."'";
         $result = mysql_query($sql);
         
         $livros = array();
         
         while($registro = mysql_fetch_assoc($result) ) {
-            $livros[]=$registro;         
+            array_push($livros, $registro); 
 	}
         
-        if(!(empty($livros))){
+        if(count($livros) == 0){
             return false;
         }
         

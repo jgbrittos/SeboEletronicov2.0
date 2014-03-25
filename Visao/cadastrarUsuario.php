@@ -42,6 +42,7 @@ $id_usuario = $_SESSION['id_usuario'];
                     </form>
                 </div>
             </div>
+            <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
     </body>
 </html>

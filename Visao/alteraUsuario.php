@@ -71,6 +71,7 @@ $textoInformativo = "Restaurar dados serve para redefinir os dados alterados nã
                     </div>
                 </form>
             </div>
+            <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
 
         <!-- Modal Excluir cadastro -->

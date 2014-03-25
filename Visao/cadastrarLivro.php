@@ -90,12 +90,13 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
                     </div>
                 </form>
             </div>
+            <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
         <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
         <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
         <script>
-            $('#labelTipoOperacaoVenda').popover('hide');
-            $('#labelTipoOperacaoTroca').popover('hide');
+                                    $('#labelTipoOperacaoVenda').popover('hide');
+                                    $('#labelTipoOperacaoTroca').popover('hide');
         </script>
     </body>
 </html>
