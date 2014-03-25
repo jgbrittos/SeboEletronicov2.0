@@ -45,8 +45,19 @@ if(!empty($_POST['tipo'])) {
             $autor = $_POST['autor'];
             $editora = $_POST['editora'];
             $edicao = $_POST['edicao'];
-            $venda = $_POST['venda'];
-            $troca = $_POST['troca'];
+            if(empty($_POST['venda']) && empty($_POST['troca'])){
+                $venda = "venda";
+                $troca = "troca";
+            }elseif(empty($_POST['venda']) && !empty($_POST['troca'])){
+                $troca = $_POST['troca'];
+                $venda = "";
+            }elseif(empty($_POST['troca']) && !empty($_POST['venda'])){
+                $venda = $_POST['venda'];
+                $troca = "";
+            }else{
+                $venda = $_POST['venda'];
+                $troca = $_POST['troca'];
+            }
             $genero = $_POST['genero'];
             $estado = $_POST['estado'];
             $descricao = $_POST['descricao'];
@@ -60,7 +71,7 @@ if(!empty($_POST['tipo'])) {
             </script>  
 
             <script language = "Javascript">
-                window.location = "http://localhost/SeboEletronicov2.0/Visao/indexLivro.php";
+                window.location = "http://localhost/SeboEletronicov2.0/Visao/indexLogin.php";
             </script><?php
             break;
 
