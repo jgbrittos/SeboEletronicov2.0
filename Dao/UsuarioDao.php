@@ -70,15 +70,13 @@ class UsuarioDao {
         
     }
 
-//    public function getCadastradosPorId($idPessoa){
-//        
-//        $sql="SELECT * FROM usuario WHERE id_usuario = '".$idPessoa."'";
-//        $resultado = mysql_query($sql);
-//        
-//        $res = mysql_fetch_array($resultado);
-//
-//        return $res;
-//        }
-}
+    public function getCadastradosPorId($idPessoa){
+        
+        $sql="SELECT * FROM usuario WHERE id_usuario = '".$idPessoa."'";
+        $resultado = mysql_query($sql);
+        
+        $res = mysql_fetch_array($resultado);
 
-?>
+        return $res;
+    }
+}
