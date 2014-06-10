@@ -25,7 +25,11 @@ class LivroControlador {
     }
     
     public function getLivroById($id){
-        return LivroDao::getLivroById($id);
+        $atributosLivro = LivroDao::getLivroById($id);
+        $livro = LivroControlador::criaObjetoLivro($atributosLivro['titulo_livro'], $atributosLivro['autor'], 
+                $atributosLivro['genero'], $atributosLivro['edicao'], $atributosLivro['editora'], $atributosLivro['venda'], 
+                $atributosLivro['troca'], $atributosLivro['estado_conserv'], $atributosLivro['descricao_livro']);
+        return $livro;
     }
     
     public function deletaLivro($idLivro){
@@ -56,6 +60,10 @@ class LivroControlador {
         return LivroDao::getAllLivro($id_dono);
     }
     
+    public function criaObjetoLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao){
+        $livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
+        return $livro;
+    }
 }
 
 ?>

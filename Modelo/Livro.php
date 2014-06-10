@@ -1,10 +1,10 @@
 <?php
 
-include '../Dao/LivroDao.php';
-include '../Utilidades/ValidaDados.php';
-include '../Utilidades/ExcessaoNomeInvalido.php';
-include '../Utilidades/ExcessaoTituloInvalido.php';
-include '../Utilidades/ExcessaoEditoraInvalida.php';
+include_once '../Utilidades/ExcessaoNomeInvalido.php';
+include_once '../Utilidades/ExcessaoTituloInvalido.php';
+include_once '../Utilidades/ExcessaoEditoraInvalida.php';
+include_once '../Utilidades/ValidaDados.php';
+include_once '../Dao/LivroDao.php';
 
 class Livro {
     

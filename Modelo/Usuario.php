@@ -1,11 +1,11 @@
 ﻿<?php
 
-include '../Utilidades/ValidaDados.php';
-include '../Utilidades/ExcessaoNomeInvalido.php';
-include '../Utilidades/ExcessaoTelefoneInvalido.php';
-include '../Utilidades/ExcessaoEmailInvalido.php';
-include '../Utilidades/ExcessaoSenhaInvalida.php';
-include '../Dao/UsuarioDao.php';
+include_once '../Utilidades/ValidaDados.php';
+include_once '../Utilidades/ExcessaoNomeInvalido.php';
+include_once '../Utilidades/ExcessaoTelefoneInvalido.php';
+include_once '../Utilidades/ExcessaoEmailInvalido.php';
+include_once '../Utilidades/ExcessaoSenhaInvalida.php';
+include_once '../Dao/UsuarioDao.php';
 
 class Usuario {
     

@@ -12,127 +12,72 @@ $id_usuario = $_SESSION['id_usuario'];
         <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
         <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
         <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
-
-        <title>Sebo Eletronico</title>
-
+        <title>Sebo Eletrônico</title>
     </head>
     <body>
         <div class="container">
             <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
             <br><br><br><br>
         </div>
+        
         <?php
-        $_POST['mural'];
-        $_POST['nome_comprador'];
-        $_POST ['id_livro'];
-        $mural = $_POST['mural'];
-        //$nome_comprador = $_POST['nome_comprador'];
-
-        include "..\Utilidades\ConexaoComBanco.php";
-        if (!$bd)
-            die("<h1>Falha no bd </h1>");
-
-        //Acessar Informações do comprador
-        $id_livro = $_POST['id_livro'];
-
+        include '../Controle/UsuarioControlador.php';
+        include '../Controle/LivroControlador.php';
+        
+        $id_livro = $_GET['id_livro'];
         $email_usuario = $_SESSION["email"];
 
-        $strSQL4 = "SELECT * FROM usuario WHERE email_usuario = '$email_usuario' ";
-
-        $rs4 = mysql_query($strSQL4);
-
-        while ($row = mysql_fetch_array($rs4)) {
-            $nome_comprador = $row['nome_usuario'];
-        }
-
-        $insere = mysql_query("INSERT INTO mural (texto,nome_pergunta,id_livro) VALUES ('$mural', '$nome_comprador', '$id_livro')");
+        $usuario = UsuarioControlador::pesquisaUsuarioPorEmail($email_usuario);
+        $livro = LivroControlador::getLivroById($id_livro);
         ?>
 
-        <div id="header">
-            <div id="logo"><img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png" class="imgHeader"/></div>
-        </div>
-
-        <div id="mainmenu">
-
-            <button class="button" onclick="home();">Home</button>
-            <button class="button" onclick="user();">Usuario</button>
-            <button class="button" onclick="livro();">Livro</button>
-            <button class="button" onclick="login();">Login</button>
-
-        </div>
-
-
-
-
-        <?php
-        include "..\Utilidades\ConexaoComBanco.php";
-        if (!$bd)
-            die("<h1>Falha no bd </h1>");
-
-        //Acessar Informações do comprador
-
-        $strSQL2 = "SELECT * FROM usuario WHERE email_usuario = '" . $email_usuario . "' ";
-
-        $rs2 = mysql_query($strSQL2);
-
-        while ($row = mysql_fetch_array($rs2)) {
-
-            $nome_comprador = $row['nome_usuario'] . "<br />";
-            $tel_comprador = $row['telefone_usuario'] . "<br />";
-        }
-
-        //Acessando informações do livro escolhido
-
-        $id_livro = $_POST["id_livro"];
-
-        $id_livro = 1;
-
-        $strSQL = "SELECT * FROM livro WHERE id_livro = '$id_livro' ";
-
-        $rs = mysql_query($strSQL);
-
-        while ($row = mysql_fetch_array($rs)) {
-
-            $titulo2 = $row['titulo_livro'] . "<br />";
-            $estado = $row['estado_conserv'] . "<br />";
-            $editora = $row ['editora'] . "<br />";
-            $autor = $row ['autor'] . "<br />";
-            $descricao = $row ['descricao_livro'] . "<br />";
-            $id_dono = $row['id_dono'] . "<br />";
-        }
-
-
-        //Exibir 
-        echo '<h6> <h1>';
-        echo $titulo2;
-        echo '</h1> </h6><br /><br />';
-
-        echo'<h6>Autor: ';
-        echo $autor;
-        echo'</h6><br />';
-
-        echo'<h6>Editora: ';
-        echo $editora;
-        echo'</h6><br />';
-
-
-        echo'<h6>Descricao: ';
-        echo $descricao;
-        echo'</h6><br /><br />';
-        ?>
-
-        <div id="formulario">
+        <br><br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>Edição</th>
+                    <th>Descrição</th>
+                    <th>Tipo(s) de operação</th>
+                    <th>Genero</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td><?php echo $livro->getTitulo() ?></td>
+                <td><?php echo $livro->getAutor() ?></td>
+                <td><?php echo $livro->getEditora() ?></td>
+                <td><?php echo $livro->getEdicao() ?></td>
+                <td><?php echo $livro->getDescricao() ?></td>
+                <td><?php
+                    echo $livro->getVenda();
+                    echo "<br/>";
+                    echo $livro->getTroca();
+                    ?>
+                </td>
+                <td><?php echo $livro->getGenero() ?></td>
+                <td><?php echo $livro->getEstado() ?></td>
+<!--                <td>
+                    <a href="http://localhost/SeboEletronicov2.0/Visao/alterarLivro.php?id=<?php // echo $valor['id_livro'] ?> " title="Alterar Livro"> <img src="img/icone_lapis.png" align="left"> </a> <br />
+                </td>
+                <td>
+                    <a data-toggle="modal" data-target="<?php // echo "#" . $nomeModal ?>" href="#" title="Excluir Livro"> <img src="img/icone_lixeira.png" align="right" ></a>
+                </td>-->
+            </tbody>
+        </table>
+<!--        <div id="formulario">
             <form name="comprarlivro" method="post" action="compralivro.php">
 
-                <input type = "hidden" name="nome_comprador" value= "<?php echo $nome_comprador; ?>" >
-                <input type="hidden" name="tel_comprador" value= " <?php echo $tel_comprador; ?>" >
-                <input type="hidden" name="id_livro" value=" <?php echo $id_livro; ?>" >
-                <input type="hidden" name="id_dono" value=" <?php echo $id_dono; ?>" >
+                <input type = "hidden" name="nome_comprador" value= "<?php //echo $nome_comprador; ?>" >
+                <input type="hidden" name="tel_comprador" value= " <?php //echo $tel_comprador; ?>" >
+                <input type="hidden" name="id_livro" value=" <?php //echo $id_livro; ?>" >
+                <input type="hidden" name="id_dono" value=" <?php //echo $id_dono; ?>" >
                 <input type="submit" value="Comprar" />
                 <label for="pergunta"></label>
             </form>
         </div>
-
 
         <div id="formulariotop"> 
             <form name="enviarpergunta" method="post" action="detalheslivro.php"> 
@@ -140,30 +85,49 @@ $id_usuario = $_SESSION['id_usuario'];
                 <br>
                 <textarea name="mural" value="mural" rows="5" cols="45" ></textarea>
                 <input type="hidden" value="nome_comprador" name="nome_comprador">
-                <input type="hidden" name="id_livro" value="<?php echo $id_livro; ?>">
+                <input type="hidden" name="id_livro" value="<?php //echo $id_livro; ?>">
                 <input type="submit" value="Enviar" />  
             </form>
 
             <br/><br/><br/>
 
+            <br /><br />
+        <h2>Deixe sua Opinião</h2>
+        <script>
+            (
+                function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id))
+                        return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+                (document, 'script', 'facebook-jssdk')
+            );
+        </script>
+        <div id="fb-root"></div>
+        <div class="fb-comments" data-href="http://localhost/SeboEletronicov2.0/Visao/detalheslivro.php?id_livro=<?php //echo $id_livro ?>" 
+             data-numposts="4" data-width="760">
+        </div>-->
 <?php
-include "..\Dao\conexao_bd.inc";
-if (!$bd)
-    die("<h1>Falha no bd </h1>");
+//include "..\Dao\conexao_bd.inc";
+//if (!$bd)
+//    die("<h1>Falha no bd </h1>");
+//
+//$strSQL3 = "SELECT * FROM mural WHERE id_livro = '" . $id_livro . "' ORDER BY id_comentario DESC";
+//
+//$rs3 = mysql_query($strSQL3);
+//
+//while ($row3 = mysql_fetch_array($rs3)) {
+//    echo $row3['nome_pergunta'];
+//    echo " disse: ";
+//    echo $row3['texto'];
+//    echo " <br /> <br />";
+//}
+//?> 
 
-$strSQL3 = "SELECT * FROM mural WHERE id_livro = '" . $id_livro . "' ORDER BY id_comentario DESC";
-
-$rs3 = mysql_query($strSQL3);
-
-while ($row3 = mysql_fetch_array($rs3)) {
-    echo $row3['nome_pergunta'];
-    echo " disse: ";
-    echo $row3['texto'];
-    echo " <br /> <br />";
-}
-?> 
-
-        </div>
 
     </body>
 <?php include_once '../Utilidades/Rodape.php'; ?>

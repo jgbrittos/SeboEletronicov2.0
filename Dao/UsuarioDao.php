@@ -4,6 +4,16 @@ include "../Utilidades/ConexaoComBanco.php";
 
 class UsuarioDao {
 
+//    private function __construct() {}
+//
+//    //Singleton Pattern
+//    public static function getInstance() {
+//        if (!isset(self::$instance)) {
+//            self::$instance = new UsuarioDao();
+//        }
+//        return self::$instance;
+//    }
+    
     public function salvaUsuario($usuario){
         $senhaAux = $usuario->getSenha();
         $senhaFinal = $senhaAux[0];
@@ -78,5 +88,20 @@ class UsuarioDao {
         $res = mysql_fetch_array($resultado);
 
         return $res;
+    }
+
+    public function pesquisaUsuarioPorEmailDao($email){
+        
+        $sql = "SELECT * FROM usuario WHERE email_usuario = '".$email."'";
+        $usuario = mysql_query($sql);
+        
+        return mysql_fetch_array($usuario);        
+    }
+    
+    public function getSenhaPorIdDao($id_senha){
+        $sql = "SELECT * FROM senha WHERE id_senha = '".$id_senha."'";
+        $senha = mysql_query($sql);
+        
+        return mysql_fetch_array($senha);
     }
 }
