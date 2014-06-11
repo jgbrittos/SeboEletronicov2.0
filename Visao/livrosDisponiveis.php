@@ -53,7 +53,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h3 class="modal-title" id="detalhesLivroLabel"><b> <?php echo $valor['titulo_livro'] ?> </b></h3>
+                                                    <h3 class="modal-title" name="titulo" id="detalhesLivroLabel"><b> <?php echo $valor['titulo_livro'] ?> </b></h3>
                                                 </div>
                                                 <div class="modal-body">
                                                     <h5 class="modal-title" id="detalhesLivroLabel"><b>Autor:</b> <?php echo $valor['autor'] ?></h5><br>
@@ -64,9 +64,14 @@ $listaLivros = LivroControlador::getAllLivro($id);
                                                     <h5 class="modal-title" id="detalhesLivroLabel"><b>Gênero:</b> <?php echo $valor['genero'] ?></h5><br>
                                                     <h5 class="modal-title" id="detalhesLivroLabel"><b>Estado:</b> <?php echo $valor['estado_conserv'] ?></h5><br>
                                                 </div>
+                                                <script type="text/javascript">
+                                                    //passando variavel do php para o js e usando na linha 73
+                                                    //http://www.mauricioprogramador.com.br/posts/passar-variavel-javascript-para-php
+                                                    var idDono = "<?php echo $valor['id_dono'];?>";
+                                                </script>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal">Comprar</button>
+                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal" onclick="passaIdDono(idDono)">Comprar</button>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
@@ -74,6 +79,12 @@ $listaLivros = LivroControlador::getAllLivro($id);
                                         <!-- /.modal-dialog -->
                                     </div>
                                     <!-- /.modal -->
+                                    <script>
+                                        function passaIdDono(id_dono) {
+                                            $("input[name=idDono]").val(id_dono);
+                                            document.FrmComprarLivro.submit();
+                                        }
+                                    </script>
                         <?php 
                                 }
                             }else{
@@ -87,5 +98,9 @@ $listaLivros = LivroControlador::getAllLivro($id);
             </div>
             <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
+        
+        <form  name="FrmComprarLivro" action="http://localhost/SeboEletronicov2.0/Visao/compralivro.php" method="post">
+            <input type="hidden" name="idDono" />
+        </form>
     </body>
 </html>
