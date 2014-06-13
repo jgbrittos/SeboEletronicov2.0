@@ -85,7 +85,7 @@ $listaLivros = LivroControlador::getLivroByIdUsuario($id);
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="window.location = 'http://localhost/SeboEletronicov2.0/Utilidades/RecebeFormLivro.php?id_livro=<?php echo $valor['id_livro'] ?>'">Confirmar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="excluiLivro()">Confirmar</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->
@@ -105,6 +105,14 @@ $listaLivros = LivroControlador::getLivroByIdUsuario($id);
             ?>
         <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
+        <script>
+            function excluiLivro(){
+                document.FrmExcluirLivro.submit()
+            }
+        </script>
+        <form  name="FrmExcluirLivro" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeFormLivro.php?id_livro=<?php echo $valor['id_livro'] ?>" method="post">
+            <input type="hidden" name="tipo" value="excluirLivro"/>
+        </form>
     </body>
 </html>
 

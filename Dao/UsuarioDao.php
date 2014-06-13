@@ -90,9 +90,9 @@ class UsuarioDao {
         return $res;
     }
 
-    public function pesquisaUsuarioPorEmailDao($email){
+    public function pesquisaUsuarioPorParametroDao($atributo, $tipo_Atributo){
         
-        $sql = "SELECT * FROM usuario WHERE email_usuario = '".$email."'";
+        $sql = "SELECT * FROM usuario WHERE $tipo_Atributo = '".$atributo."'";
         $usuario = mysql_query($sql);
         
         return mysql_fetch_array($usuario);        

@@ -13,34 +13,37 @@ class LivroDao {
         return $livro;
     }
 
-    public function pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca){
-        if(empty($disponibilidadeTroca) && !empty($disponibilidadeVenda)){
-            if(empty($estadoNovo) && !empty($estadoUsado)){
-                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."' 
-            AND tipo_operacao = '".$disponibilidadeVenda."'";
-            }elseif (!empty($estadoNovo) && empty($estadoUsado)) {
-                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."' 
-            AND tipo_operacao = '".$disponibilidadeVenda."'";
-            }
-        }  else if(!empty($disponibilidadeTroca) && empty($disponibilidadeVenda)){
-            if(empty($estadoNovo) && !empty($estadoUsado)){
-                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."' 
-            AND tipo_operacao = '".$disponibilidadeTroca."'";
-            }elseif (!empty($estadoNovo) && empty($estadoUsado)) {
-                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."' 
-            AND tipo_operacao = '".$disponibilidadeTroca."'";
-            }
-        } else{
+    public function pesquisaLivroDao($titulo/*, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca*/){
+//        if(empty($disponibilidadeTroca) && !empty($disponibilidadeVenda)){
+//            if(empty($estadoNovo) && !empty($estadoUsado)){
+//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."' 
+//            AND tipo_operacao = '".$disponibilidadeVenda."'";
+//            }elseif (!empty($estadoNovo) && empty($estadoUsado)) {
+//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."' 
+//            AND tipo_operacao = '".$disponibilidadeVenda."'";
+//            }
+//        }  else if(!empty($disponibilidadeTroca) && empty($disponibilidadeVenda)){
+//            if(empty($estadoNovo) && !empty($estadoUsado)){
+//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."' 
+//            AND tipo_operacao = '".$disponibilidadeTroca."'";
+//            }elseif (!empty($estadoNovo) && empty($estadoUsado)) {
+//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."' 
+//            AND tipo_operacao = '".$disponibilidadeTroca."'";
+//            }
+//        } else{
             $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."'";
-        }
+//        }
             
+        var_dump($sql);
         $lista = mysql_query($sql);
-        $listaLivros = mysql_fetch_array($lista);
+        $listaLivros = mysql_fetch_row($lista);
         
-        if(count($listaLivros) == 0){
-            return false;
-        }
+//        if(count($listaLivros) == 0){
+//            return false;
+//        }
         
+        var_dump($listaLivros);
+        exit;
         return $listaLivros;
     }
     

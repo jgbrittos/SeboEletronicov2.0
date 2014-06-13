@@ -20,8 +20,12 @@ class LivroControlador {
         return LivroDao::salvaLivro($livro, $id_dono);
     }
     
-    public function pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca){
-       return LivroDao:: pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
+    public function pesquisaLivro($titulo/*, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca*/){
+       
+        $listaLivros = Array();
+        $listaLivrosMatriz = LivroDao:: pesquisaLivroDao($titulo/*, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca*/);
+        
+        return $listaLivrosMatriz;
     }
     
     public function getLivroById($id){
@@ -65,5 +69,3 @@ class LivroControlador {
         return $livro;
     }
 }
-
-?>

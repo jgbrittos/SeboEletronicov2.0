@@ -2,8 +2,7 @@
 session_start();
 $id_usuario = $_SESSION['id_usuario'];
 $id_dono = $_POST['idDono'];
-var_dump($id_dono);
-exit;
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -23,9 +22,10 @@ exit;
         <br><br><br><br>
         
         <?php 
-            include 'Usuario.php';
+            include_once '../Controle/UsuarioControlador.php';
 
-            $destinatario = Usuario::getEmail();
+            $destinatario = UsuarioControlador::pesquisaUsuarioPorParametro($id_dono, "id_usuario");
+
             $mensagem ='<html>
                             <body>
                                 <table background = "http://i.imgur.com/GX69Php.jpg" height = "800" width=" 650" padding-top = "300" padding-right= "100" padding-bottom ="300" padding-left= "100">
@@ -43,7 +43,7 @@ exit;
 
 
             $subject= 'Existe uma pessoa interessada no seu Livro - Sebo Eletrônico'; // Assunto.
-            $to= $destinatario; // Para.
+            $to= $destinatario->getEmail(); // Para.
             $body= $mensagem; // corpo do texto.
             if (mail($to,$subject,$body,"Content-Type: text/html")){
                 echo 'e-mail enviado com sucesso!';

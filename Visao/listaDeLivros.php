@@ -1,9 +1,15 @@
 <?php
 
 include '../Controle/LivroControlador.php';
-$id = $_REQUEST['livros'];
+$titulo = $_POST['titulo'];
+//$novo = $_POST['novo'];
+//$usado = $_POST['usado'];
+//$venda = $_POST['venda'];
+//$troca = $_POST['troca'];
 
-$valor = LivroControlador::getLivroById($id);
+$listaLivros = LivroControlador::pesquisaLivro($titulo/*, $novo, $usado, $venda, $troca*/);
+var_dump($listaLivros);
+//$livro = LivroControlador::getLivroById($id);
 
 ?>
 
@@ -40,23 +46,23 @@ $valor = LivroControlador::getLivroById($id);
                 </thead>
                 <tbody>
                     <?php
-                    if ($valor) {
+                    if ($livro) {
                         //foreach ($listaLivros as $chave => $valor) {
                             ?>  
                             <tr>
-                                <td><?php echo $valor['titulo_livro']?></td>
-                                <td><?php echo $valor['autor']?></td>
-                                <td><?php echo $valor['editora'] ?></td>
-                                <td><?php echo $valor['edicao'] ?></td>
-                                <td><?php echo $valor['descricao_livro'] ?></td>
+                                <td><?php echo $livro->getTitulo() ?></td>
+                                <td><?php echo $livro->getAutor()?></td>
+                                <td><?php echo $livro->getEditora() ?></td>
+                                <td><?php echo $livro->getEdicao() ?></td>
+                                <td><?php echo $livro->getDescricao() ?></td>
                                 <td><?php
-                                    echo $valor['venda'];
+                                    echo $livro->getVenda();
                                     echo "<br/>";
-                                    echo $valor['troca'];
+                                    echo $livro->getTroca();
                                     ?>
                                 </td>
-                                <td><?php echo $valor['genero'] ?></td>
-                                <td><?php echo $valor['estado_conserv'] ?></td>
+                                <td><?php echo $livro->getGenero() ?></td>
+                                <td><?php echo $livro->getEstado() ?></td>
                             </tr>
                         <?php
                         //}

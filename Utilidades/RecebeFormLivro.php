@@ -77,54 +77,64 @@ if(!empty($_POST['tipo'])) {
 
         case "pesquisaLivro":
             $titulo = $_POST['titulo'];
-            if(empty($_POST['novo']) && empty($_POST['usado'])){
-                $estadoNovo = "novo";
-                $estadoUsado = "usado";
-            }elseif(empty($_POST['novo']) && !empty($_POST['usado'])){
-                $estadoUsado = $_POST['usado'];
-                $estadoNovo = "";
-            }elseif(empty($_POST['usado']) && !empty($_POST['novo'])){
-                $estadoNovo = $_POST['novo'];
-                $estadoUsado = "";
-            }else{
-                $estadoNovo = $_POST['novo'];
-                $estadoUsado = $_POST['usado'];
-            }
-
-            if(empty($_POST['venda']) && empty($_POST['troca'])){
-                $disponibilidadeVenda = "venda";
-                $disponibilidadeTroca = "troca";
-            }elseif(empty($_POST['venda']) && !empty($_POST['troca'])){
-                $disponibilidadeTroca = $_POST['troca'];
-                $disponibilidadeVenda = "";
-            }elseif(empty($_POST['troca']) && !empty($_POST['venda'])){
-                $disponibilidadeVenda = $_POST['venda'];
-                $disponibilidadeTroca = "";
-            }else{
-                $disponibilidadeVenda = $_POST['venda'];
-                $disponibilidadeTroca = $_POST['troca'];
-            }
-            
-            $listaLivros = LivroControlador::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
-            $idLivro = $listaLivros['id_livro'];
-            
+//            if(empty($_POST['novo']) && empty($_POST['usado'])){
+//                $estadoNovo = "novo";
+//                $estadoUsado = "usado";
+//            }elseif(empty($_POST['novo']) && !empty($_POST['usado'])){
+//                $estadoUsado = $_POST['usado'];
+//                $estadoNovo = "";
+//            }elseif(empty($_POST['usado']) && !empty($_POST['novo'])){
+//                $estadoNovo = $_POST['novo'];
+//                $estadoUsado = "";
+//            }else{
+//                $estadoNovo = $_POST['novo'];
+//                $estadoUsado = $_POST['usado'];
+//            }
+//
+//            if(empty($_POST['venda']) && empty($_POST['troca'])){
+//                $disponibilidadeVenda = "venda";
+//                $disponibilidadeTroca = "troca";
+//            }elseif(empty($_POST['venda']) && !empty($_POST['troca'])){
+//                $disponibilidadeTroca = $_POST['troca'];
+//                $disponibilidadeVenda = "";
+//            }elseif(empty($_POST['troca']) && !empty($_POST['venda'])){
+//                $disponibilidadeVenda = $_POST['venda'];
+//                $disponibilidadeTroca = "";
+//            }else{
+//                $disponibilidadeVenda = $_POST['venda'];
+//                $disponibilidadeTroca = $_POST['troca'];
+//            }
             ?>
-            <script language = "Javascript">
-                window.location = "http://localhost/SeboEletronicov2.0/Visao/listaDeLivros.php?livros=<?php echo $idLivro ?>";
-            </script><?php
+            
+            <script>
+                window.onload = function() {
+                    document.FrmListaLivros.submit()
+                };
+            </script>
+            <form name="FrmListaLivros" action="http://localhost/SeboEletronicov2.0/Visao/listaDeLivros.php" method="post">
+                <input type="hidden" name="titulo" value="<?php echo $titulo;?>"/>
+                <!--<input type="hidden" name="novo" value="<?php //echo $estadoNovo;?>" />
+                <input type="hidden" name="usado" value="<?php //echo $estadoUsado;?>" />
+                <input type="hidden" name="venda" value="<?php //echo $disponibilidadeVenda;?>" />
+                <input type="hidden" name="troca" value="<?php //echo $disponibilidadeTroca;?>" />-->
+            </form>
+                <?php
+            break;
+        
+        case "excluirLivro":
+            if ($_REQUEST['id_livro']) {
+                $idLivro = $_REQUEST['id_livro'];
+                LivroControlador::deletaLivro($idLivro);
+                ?>
+                <script language="Javascript" type="text/javascript">
+                    alert("Livro excluido com sucesso!!");
+                </script>
+
+                <script language = "Javascript">
+                    window.location = "http://localhost/SeboEletronicov2.0/Visao/meusLivros.php";
+                </script><?php
+            }
             break;
     }
 }
-if ($_REQUEST['id_livro']) {
-    $idLivro = $_REQUEST['id_livro'];
-    LivroControlador::deletaLivro($idLivro);
-    ?>
-    <script language="Javascript" type="text/javascript">
-        alert("Livro excluido com sucesso!!");
-    </script>
 
-    <script language = "Javascript">
-        window.location = "http://localhost/SeboEletronicov2.0/Visao/meusLivros.php";
-    </script><?php
-}
-?>

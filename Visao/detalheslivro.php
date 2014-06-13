@@ -27,7 +27,7 @@ $id_usuario = $_SESSION['id_usuario'];
         $id_livro = $_GET['id_livro'];
         $email_usuario = $_SESSION["email"];
 
-        $usuario = UsuarioControlador::pesquisaUsuarioPorEmail($email_usuario);
+        $usuario = UsuarioControlador::pesquisaUsuarioPorParametro($email_usuario, "email_usuario");
         $livro = LivroControlador::getLivroById($id_livro);
         ?>
 
@@ -88,29 +88,7 @@ $id_usuario = $_SESSION['id_usuario'];
                 <input type="hidden" name="id_livro" value="<?php //echo $id_livro; ?>">
                 <input type="submit" value="Enviar" />  
             </form>
-
-            <br/><br/><br/>
-
-            <br /><br />
-        <h2>Deixe sua Opinião</h2>
-        <script>
-            (
-                function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id))
-                        return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }
-                (document, 'script', 'facebook-jssdk')
-            );
-        </script>
-        <div id="fb-root"></div>
-        <div class="fb-comments" data-href="http://localhost/SeboEletronicov2.0/Visao/detalheslivro.php?id_livro=<?php //echo $id_livro ?>" 
-             data-numposts="4" data-width="760">
-        </div>-->
+-->
 <?php
 //include "..\Dao\conexao_bd.inc";
 //if (!$bd)

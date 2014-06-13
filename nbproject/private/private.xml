@@ -4,7 +4,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Visao/pesquisarLivro.php</file>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Visao/listaDeLivros.php</file>
             <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Dao/LivroDao.php</file>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Visao/meusLivros.php</file>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Visao/livrosDisponiveis.php</file>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Controle/LivroControlador.php</file>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Utilidades/BarraNavegacao.php</file>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Utilidades/RecebeFormLivro.php</file>
         </group>
     </open-files>
 </project-private>
