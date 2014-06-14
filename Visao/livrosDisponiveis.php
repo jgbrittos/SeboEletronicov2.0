@@ -46,8 +46,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
                                             }
                                             ?>
                                         </p>
-                                        <p><a class="btn btn-default" href="#" data-toggle="modal" data-target="#detalhesLivro<?php echo $livro['id_livro']?>" role="button">Ver detalhes »</a></p>
-                                        <!--onclick="window.location = '../Visao/detalhesLivro.php?id_livro=<?php //echo $valor['id_livro'] ?>'"-->
+                                        <p><a class="btn btn-default" href="perfilLivro.php?id_livro=<?php echo $livro['id_livro']?>" role="button">Ver detalhes »</a></p><!--data-toggle="modal" data-target="#detalhesLivro echo $livro['id_livro'] "-->
                                     </div>
                                     <div class="modal fade" id="detalhesLivro<?php echo $livro['id_livro']?>" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                                         <div class="modal-dialog">
@@ -91,7 +90,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
                     </div>
                 </div>
             </div>
-            <?php include_once '../Utilidades/Rodape.php'; ?>
+            <?php //include_once '../Utilidades/Rodape.php'; ?>
         </div>
         
         <form  name="FrmComprarLivro" action="../Visao/compralivro.php" method="post">
