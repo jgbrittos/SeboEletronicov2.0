@@ -2,13 +2,9 @@
 
 include '../Controle/LivroControlador.php';
 $titulo = $_POST['titulo'];
-//$novo = $_POST['novo'];
-//$usado = $_POST['usado'];
-//$venda = $_POST['venda'];
-//$troca = $_POST['troca'];
 
-$listaLivros = LivroControlador::pesquisaLivro($titulo/*, $novo, $usado, $venda, $troca*/);
-var_dump($listaLivros);
+$listaLivros = LivroControlador::pesquisaLivro($titulo);
+
 //$livro = LivroControlador::getLivroById($id);
 
 ?>
@@ -46,9 +42,9 @@ var_dump($listaLivros);
                 </thead>
                 <tbody>
                     <?php
-                    if ($livro) {
-                        //foreach ($listaLivros as $chave => $valor) {
-                            ?>  
+                    if ($listaLivros) {
+                        foreach ($listaLivros as $livro) {
+                            ?>
                             <tr>
                                 <td><?php echo $livro->getTitulo() ?></td>
                                 <td><?php echo $livro->getAutor()?></td>
@@ -65,7 +61,7 @@ var_dump($listaLivros);
                                 <td><?php echo $livro->getEstado() ?></td>
                             </tr>
                         <?php
-                        //}
+                        }   
                     } else {
                     ?>
                     </tbody>

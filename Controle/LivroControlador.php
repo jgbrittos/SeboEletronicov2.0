@@ -20,12 +20,18 @@ class LivroControlador {
         return LivroDao::salvaLivro($livro, $id_dono);
     }
     
-    public function pesquisaLivro($titulo/*, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca*/){
+    public function pesquisaLivro($titulo){
        
-        $listaLivros = Array();
-        $listaLivrosMatriz = LivroDao:: pesquisaLivroDao($titulo/*, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca*/);
-        
-        return $listaLivrosMatriz;
+        $listaLivrosMatriz = LivroDao::pesquisaLivroDao($titulo);
+        $livros = Array();
+        foreach($listaLivrosMatriz as $livro){
+            $livroObjeto = LivroControlador::criaObjetoLivro($livro['titulo_livro'], $livro['autor'], 
+                $livro['genero'], $livro['edicao'], $livro['editora'], $livro['venda'], 
+                $livro['troca'], $livro['estado_conserv'], $livro['descricao_livro']);
+            array_push($livros, $livroObjeto);
+        }
+        //var_dump($listaLivrosMatriz[2]['titulo_livro']);
+        return $livros;
     }
     
     public function getLivroById($id){

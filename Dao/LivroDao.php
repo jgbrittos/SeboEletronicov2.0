@@ -13,38 +13,22 @@ class LivroDao {
         return $livro;
     }
 
-    public function pesquisaLivroDao($titulo/*, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca*/){
-//        if(empty($disponibilidadeTroca) && !empty($disponibilidadeVenda)){
-//            if(empty($estadoNovo) && !empty($estadoUsado)){
-//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."' 
-//            AND tipo_operacao = '".$disponibilidadeVenda."'";
-//            }elseif (!empty($estadoNovo) && empty($estadoUsado)) {
-//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."' 
-//            AND tipo_operacao = '".$disponibilidadeVenda."'";
-//            }
-//        }  else if(!empty($disponibilidadeTroca) && empty($disponibilidadeVenda)){
-//            if(empty($estadoNovo) && !empty($estadoUsado)){
-//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoUsado."' 
-//            AND tipo_operacao = '".$disponibilidadeTroca."'";
-//            }elseif (!empty($estadoNovo) && empty($estadoUsado)) {
-//                $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND estado_conserv = '".$estadoNovo."' 
-//            AND tipo_operacao = '".$disponibilidadeTroca."'";
-//            }
-//        } else{
-            $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."'";
-//        }
-            
-        var_dump($sql);
-        $lista = mysql_query($sql);
-        $listaLivros = mysql_fetch_row($lista);
+    public function pesquisaLivroDao($titulo){
+        $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."'";
         
-//        if(count($listaLivros) == 0){
-//            return false;
-//        }
+        $result = mysql_query($sql);
         
-        var_dump($listaLivros);
-        exit;
-        return $listaLivros;
+        $livros = array();
+        
+        while($registro = mysql_fetch_assoc($result) ) {
+            array_push($livros, $registro);
+        }
+        
+        if(count($livros) == 0){
+            return false;
+        }
+        
+        return $livros;
     }
     
     public function getLivroById($id){
@@ -105,5 +89,4 @@ class LivroDao {
     }
     
 }
-?>
 
