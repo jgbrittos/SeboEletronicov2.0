@@ -49,7 +49,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                 fjs.parentNode.insertBefore(js, fjs);
               }(document, 'script', 'facebook-jssdk'));
             </script>  
-            <div class="fb-comments" data-href="indexLogin.php" data-width="760" data-numposts="10" data-colorscheme="light"></div>-->
+            <div class="fb-comments" data-href="seboeletronico.hol.es/Visao/indexLogin.php" data-width="760" data-numposts="10" data-colorscheme="light"></div>-->
             
             <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>

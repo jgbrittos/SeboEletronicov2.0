@@ -30,44 +30,44 @@ $listaLivros = LivroControlador::getAllLivro($id);
                     <div class="row">
                         <?php 
                             if ($listaLivros) {
-                                foreach ($listaLivros as $chave => $valor) {?>
+                                foreach ($listaLivros as $livro) {?>
                                     <div class="col-6 col-sm-6 col-lg-4" style="width: 292px; height: 297px;">
-                                        <h3><?php echo $valor['titulo_livro'] ?></h3>
+                                        <h3><?php echo $livro['titulo_livro'] ?></h3>
                                         <p style="text-align: justify">
                                             <?php
-                                            if (empty($valor['descricao_livro'])) {
+                                            if (empty($livro['descricao_livro'])) {
                                                 echo "Descrição indisponível.";
                                             } else {
-                                                if (strlen($valor['descricao_livro']) <= 100) {
-                                                    echo $valor['descricao_livro'];
+                                                if (strlen($livro['descricao_livro']) <= 100) {
+                                                    echo $livro['descricao_livro'];
                                                 } else {
-                                                    echo substr($valor['descricao_livro'], 0, 100) . "(...)";
+                                                    echo substr($livro['descricao_livro'], 0, 100) . "(...)";
                                                 }
                                             }
                                             ?>
                                         </p>
-                                        <p><a class="btn btn-default" href="#" data-toggle="modal" data-target="#detalhesLivro<?php echo $valor['id_livro']?>" role="button">Ver detalhes »</a></p>
+                                        <p><a class="btn btn-default" href="#" data-toggle="modal" data-target="#detalhesLivro<?php echo $livro['id_livro']?>" role="button">Ver detalhes »</a></p>
                                         <!--onclick="window.location = '../Visao/detalhesLivro.php?id_livro=<?php //echo $valor['id_livro'] ?>'"-->
                                     </div>
-                                    <div class="modal fade" id="detalhesLivro<?php echo $valor['id_livro']?>" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                                    <div class="modal fade" id="detalhesLivro<?php echo $livro['id_livro']?>" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h3 class="modal-title" name="titulo" id="detalhesLivroLabel"><b> <?php echo $valor['titulo_livro'] ?> </b></h3>
+                                                    <h3 class="modal-title" name="titulo" id="detalhesLivroLabel"><b> <?php echo $livro['titulo_livro'] ?> </b></h3>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Autor:</b> <?php echo $valor['autor'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Editora:</b> <?php echo $valor['editora'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Edição:</b> <?php echo $valor['edicao'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Descrição:</b> <?php echo $valor['descricao_livro'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Tipo(s) de operação:</b> <?php echo $valor['venda'] . '<br>' . $valor['troca'];?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Gênero:</b> <?php echo $valor['genero'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Estado:</b> <?php echo $valor['estado_conserv'] ?></h5><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Autor:</b> <?php echo $livro['autor'] ?></h5><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Editora:</b> <?php echo $livro['editora'] ?></h5><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Edição:</b> <?php echo $livro['edicao'] ?></h5><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Descrição:</b> <?php echo $livro['descricao_livro'] ?></h5><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Tipo(s) de operação:</b> <?php echo $livro['venda'] . '<br>' . $livro['troca'];?></h5><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Gênero:</b> <?php echo $livro['genero'] ?></h5><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Estado:</b> <?php echo $livro['estado_conserv'] ?></h5><br>
                                                 </div>
                                                 <script type="text/javascript">
                                                     //passando variavel do php para o js e usando na linha 73
                                                     //http://www.mauricioprogramador.com.br/posts/passar-variavel-javascript-para-php
-                                                    var idDono = "<?php echo $valor['id_dono'];?>";
+                                                    var idDono = "<?php echo $livro['id_dono'];?>";
                                                 </script>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -101,6 +101,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
         
         <form  name="FrmComprarLivro" action="../Visao/compralivro.php" method="post">
             <input type="hidden" name="idDono" />
+            <input type="hidden" name="tituloLivro" value="<?php echo $livro['titulo_livro']?>"/>
         </form>
     </body>
 </html>
