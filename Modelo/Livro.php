@@ -145,7 +145,7 @@ class Livro {
 //            print"<script>alert('".$e->getMessage()."')</script>";
             
 //<!--<script language = "Javascript">
-//                    window.location="http://localhost/SeboEletronicov2.0/Visao/cadastrarLivro.php";
+//                    window.location="../Visao/cadastrarLivro.php";
 //                </script>-->
             
 //            
