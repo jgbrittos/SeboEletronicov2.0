@@ -13,7 +13,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
         <link rel="stylesheet" href="Css/estilo.css"/>
         <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
         <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
-        <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
+        <script src="../Utilidades/Redireciona.js"></script> 
 
         <title>Sebo Eletrônico</title>
     </head>
@@ -28,8 +28,8 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             <br>
             <table>
                 <tr>
-                    <td  widht="50%" style="padding: 50px"><img src="http://localhost/SeboEletronicov2.0/Visao/img/Login.png" class="img3" /></td>
-                    <td  widht="50%" style="text-align: justify;">
+                    <td style="padding: 50px"><img src="img/Login.png" class="img3" /></td>
+                    <td style="text-align: justify;">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus pharetra justo et varius. Integer molestie massa nunc, 
                         aliquet rhoncus orci gravida in. Praesent a nulla sem. Sed fermentum dui eget risus adipiscing dapibus. Quisque a orci risus. 
                         Proin ultrices mauris quam, non lacinia metus feugiat eget. Proin sodales sagittis tristique. Sed commodo sem sit amet odio 
@@ -49,7 +49,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                 fjs.parentNode.insertBefore(js, fjs);
               }(document, 'script', 'facebook-jssdk'));
             </script>  
-            <div class="fb-comments" data-href="http://localhost/SeboEletronicov2.0/Visao/indexLogin.php" data-width="760" data-numposts="10" data-colorscheme="light"></div>-->
+            <div class="fb-comments" data-href="../Visao/indexLogin.php" data-width="760" data-numposts="10" data-colorscheme="light"></div>-->
             
             <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
