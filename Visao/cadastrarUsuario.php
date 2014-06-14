@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="Css/bootstrap.3.0.3/bootstrap.css"/>
         <link rel="stylesheet" href="Css/todc-bootstrap.3/todcBootstrap.3.css"/>
         <link rel="stylesheet" href="Css/estilo.css"/>
-        <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
+        <script src="../Utilidades/Redireciona.js"></script> 
         <title>Sebo Eletrônico</title>
     </head>
 
@@ -25,8 +25,8 @@
         <div class="container login" style="padding: 30px;">
             <div class="col-md-4 col-md-offset-4 well-lg login">
                 <div class="formLogin">
-                    <img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png" style="margin-right: auto; margin-left: auto;"/>
-                    <form name="Insere Dados" method="post" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeForm.php" class="form-horizontal" role="form">
+                    <img src="../Visao/img/sebo_header.png" style="margin-right: auto; margin-left: auto;"/>
+                    <form name="Insere Dados" method="post" action="../Utilidades/RecebeForm.php" class="form-horizontal" role="form">
                         <input name="nome" type="text" class="form-control" placeholder="Nome" required/>
                         <input name="email" type="text" class="form-control" placeholder="E-mail" required/>
                         <input name="telefone" type="text" class="form-control" maxlength="8" placeholder="Telefone" required/>
