@@ -15,7 +15,7 @@ $textoInformativo = "Restaurar dados serve para redefinir os dados alterados nã
         <link rel="stylesheet" href="Css/bootstrap.3.0.3/bootstrap.css"/>
         <link rel="stylesheet" href="Css/todc-bootstrap.3/todcBootstrap.3.css"/>
         <link rel="stylesheet" href="Css/estilo.css"/>
-        <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
+        <script src="../Utilidades/Redireciona.js"></script> 
         <title>Sebo Eletrônico</title>
     </head>
     <body>
@@ -25,7 +25,7 @@ $textoInformativo = "Restaurar dados serve para redefinir os dados alterados nã
             <h2>Atualizar cadastro</h2>
             <br><br>
             <div class="center-block" style="width: 68.66666666666667%;">
-                <form class="form-horizontal" name="Insere Dados" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeForm.php" method="post" role="form">
+                <form class="form-horizontal" name="Insere Dados" action="../Utilidades/RecebeForm.php" method="post" role="form">
                     <div class="form-group">
                         <label for="nome" class="col-sm-2 control-label">Nome</label>
                         <div class="col-sm-10">
@@ -102,7 +102,7 @@ $textoInformativo = "Restaurar dados serve para redefinir os dados alterados nã
         </div>
         <!-- /.modal -->
 
-        <form class="form-horizontal" name="ExcluiUsuario" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeForm.php" method="post" role="form">
+        <form class="form-horizontal" name="ExcluiUsuario" action="../Utilidades/RecebeForm.php" method="post" role="form">
             <input type="hidden" name="tipo" value="deletar"/>
             <input type="hidden" name="email" value="<?php echo $cadastro['email_usuario'] ?>"/>
             <input type="hidden" name="senha" value="<?php echo $senha ?>"/>
