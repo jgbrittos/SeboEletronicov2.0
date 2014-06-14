@@ -14,7 +14,7 @@ $listaLivros = LivroControlador::getLivroByIdUsuario($id);
         <link rel="stylesheet" href="Css/estilo.css"/>
         <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
         <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
-        <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
+        <script src="../Utilidades/Redireciona.js"></script> 
         <title>Sebo Eletrônico</title>
 
     </head>
@@ -62,7 +62,7 @@ $listaLivros = LivroControlador::getLivroByIdUsuario($id);
                                 <td><?php echo $valor['genero'] ?></td>
                                 <td><?php echo $valor['estado_conserv'] ?></td>
                                 <td>
-                                    <a href="http://localhost/SeboEletronicov2.0/Visao/alterarLivro.php?id=<?php echo $valor['id_livro'] ?> " title="Alterar Livro"> <img src="img/icone_lapis.png" align="left"> </a> <br />
+                                    <a href="../Visao/alterarLivro.php?id=<?php echo $valor['id_livro'] ?> " title="Alterar Livro"> <img src="img/icone_lapis.png" align="left"> </a> <br />
                                 </td>
                                 <td>
                                     <a data-toggle="modal" data-target="<?php echo "#" . $nomeModal ?>" href="#" title="Excluir Livro"> <img src="img/icone_lixeira.png" align="right" ></a>
@@ -110,7 +110,7 @@ $listaLivros = LivroControlador::getLivroByIdUsuario($id);
                 document.FrmExcluirLivro.submit()
             }
         </script>
-        <form  name="FrmExcluirLivro" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeFormLivro.php?id_livro=<?php echo $valor['id_livro'] ?>" method="post">
+        <form  name="FrmExcluirLivro" action="../Utilidades/RecebeFormLivro.php?id_livro=<?php echo $valor['id_livro'] ?>" method="post">
             <input type="hidden" name="tipo" value="excluirLivro"/>
         </form>
     </body>
