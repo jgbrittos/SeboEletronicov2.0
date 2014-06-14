@@ -14,7 +14,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
         <link rel="stylesheet" href="Css/estilo.css"/>
         <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
         <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
-        <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
+        <script src="../Utilidades/Redireciona.js"></script> 
         <title>Sebo Eletrônico</title>
     </head>
     <body>
@@ -47,7 +47,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
                                             ?>
                                         </p>
                                         <p><a class="btn btn-default" href="#" data-toggle="modal" data-target="#detalhesLivro<?php echo $valor['id_livro']?>" role="button">Ver detalhes »</a></p>
-                                        <!--onclick="window.location = 'http://localhost/SeboEletronicov2.0/Visao/detalhesLivro.php?id_livro=<?php //echo $valor['id_livro'] ?>'"-->
+                                        <!--onclick="window.location = '../Visao/detalhesLivro.php?id_livro=<?php //echo $valor['id_livro'] ?>'"-->
                                     </div>
                                     <div class="modal fade" id="detalhesLivro<?php echo $valor['id_livro']?>" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                                         <div class="modal-dialog">
@@ -99,7 +99,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
             <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
         
-        <form  name="FrmComprarLivro" action="http://localhost/SeboEletronicov2.0/Visao/compralivro.php" method="post">
+        <form  name="FrmComprarLivro" action="../Visao/compralivro.php" method="post">
             <input type="hidden" name="idDono" />
         </form>
     </body>
