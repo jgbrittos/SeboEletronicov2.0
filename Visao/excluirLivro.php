@@ -5,16 +5,16 @@ $id_usuario = $_SESSION['id_usuario'];
 <html>
 <head>	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="http://localhost/SeboEletronicov2.0/Visao/css/UsuarioStyle.css" type="text/css" media="all">
-        <link rel="stylesheet" href="http://localhost/SeboEletronicov2.0/Visao/css/main.css" type="text/css" media="all">
-        <link rel="shortcut icon" href="http://localhost/SeboEletronicov2.0/Visao/img/android.ico">
-        <script src="http://localhost/SeboEletronicov2.0/Utilidades/Redireciona.js"></script> 
+        <link rel="stylesheet" href="../Visao/css/UsuarioStyle.css" type="text/css" media="all">
+        <link rel="stylesheet" href="../Visao/css/main.css" type="text/css" media="all">
+        <link rel="shortcut icon" href="../Visao/img/android.ico">
+        <script src="../Utilidades/Redireciona.js"></script> 
     <title>Sebo Eletrônico</title>
     
 </head>
 <body>
     <div id="header">
-		<div id="logo"><img src="http://localhost/SeboEletronicov2.0/Visao/img/sebo_header.png" class="imgHeader"/></div>
+		<div id="logo"><img src="../Visao/img/sebo_header.png" class="imgHeader"/></div>
     </div>
        <button class="button" onclick="home()">Home</button>
        <button class="button" onclick="user();">Usuário</button>       
@@ -36,7 +36,7 @@ $id_usuario = $_SESSION['id_usuario'];
     <br/>
     <br/>
     
-    <form  name="Insere Dados" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeFormLivro.php" method="post" class="Formulario">
+    <form  name="Insere Dados" action="../Utilidades/RecebeFormLivro.php" method="post" class="Formulario">
         
                 <table class='insr'>
 
