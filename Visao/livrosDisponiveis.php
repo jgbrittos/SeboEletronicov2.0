@@ -64,14 +64,10 @@ $listaLivros = LivroControlador::getAllLivro($id);
                                                     <h5 class="modal-title" id="detalhesLivroLabel"><b>Gênero:</b> <?php echo $livro['genero'] ?></h5><br>
                                                     <h5 class="modal-title" id="detalhesLivroLabel"><b>Estado:</b> <?php echo $livro['estado_conserv'] ?></h5><br>
                                                 </div>
-                                                <script type="text/javascript">
-                                                    //passando variavel do php para o js e usando na linha 73
-                                                    //http://www.mauricioprogramador.com.br/posts/passar-variavel-javascript-para-php
-                                                    var idDono = "<?php echo $livro['id_dono'];?>";
-                                                </script>
+                                                
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal" onclick="passaIdDono(idDono)">Comprar</button>
+                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal" onclick="disparaform()">Comprar</button>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
@@ -80,8 +76,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
                                     </div>
                                     <!-- /.modal -->
                                     <script>
-                                        function passaIdDono(id_dono) {
-                                            $("input[name=idDono]").val(id_dono);
+                                        function disparaform() {
                                             document.FrmComprarLivro.submit();
                                         }
                                     </script>
@@ -100,7 +95,7 @@ $listaLivros = LivroControlador::getAllLivro($id);
         </div>
         
         <form  name="FrmComprarLivro" action="../Visao/compralivro.php" method="post">
-            <input type="hidden" name="idDono" />
+            <input type="hidden" name="idDono" value="<?php echo $livro['id_dono'];?>"/>
             <input type="hidden" name="tituloLivro" value="<?php echo $livro['titulo_livro']?>"/>
         </form>
     </body>

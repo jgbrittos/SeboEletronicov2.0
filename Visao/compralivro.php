@@ -1,10 +1,3 @@
-<?php
-session_start();
-$id_usuario = $_SESSION['id_usuario'];
-$id_dono = $_POST['idDono'];
-$tituloLivro = $_POST['tituloLivro'];
-
-?>
 <!DOCTYPE HTML>
 <html>
 <head>	
@@ -24,7 +17,12 @@ $tituloLivro = $_POST['tituloLivro'];
         
         <?php 
             include_once '../Controle/UsuarioControlador.php';
-
+            
+            session_start();
+            $id_usuario = $_SESSION['id_usuario'];
+            $id_dono = $_POST['idDono'];
+            $tituloLivro = $_POST['tituloLivro'];
+            
             $vendedor = UsuarioControlador::pesquisaUsuarioPorParametro($id_dono, "id_usuario");
             $comprador = UsuarioControlador::pesquisaUsuarioPorParametro($id_usuario, "id_usuario");
             
@@ -44,13 +42,16 @@ $tituloLivro = $_POST['tituloLivro'];
                         </html>';
 
 
-            $subject= 'Existe uma pessoa interessada no seu Livro - Sebo Eletrônico'; // Assunto.
+            $subject= 'Existe uma pessoa interessada em um livro seu!'; // Assunto.
             $to= $vendedor->getEmail(); // Para.
             $body= $mensagem; // corpo do texto.
-            if (mail($to,$subject,$body,"Content-Type: text/html")){
-                echo 'e-mail enviado com sucesso!';
+            $headers = 'From: Sebo Eletrônico <suporte@seboeletronico.hol.es>' . "\r\n";//de quem
+            $headers .= "Content-Type: text/html" . "\r\n";
+
+            if (mail($to,$subject,$body,$headers)){
+                echo 'E-mail enviado com sucesso!';
             } else {
-                echo 'e-mail nao enviado!';
+                echo 'Algo ocorreu! :( E-mail não enviado!';
             }
         ?>
     </div>
