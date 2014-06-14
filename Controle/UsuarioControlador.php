@@ -9,7 +9,7 @@ class UsuarioControlador {
             $usuario = new Usuario($nome, $telefone, $email, $senha);
         }catch(Exception $e){
             print"<script>alert('".$e->getMessage()."')</script>";
-            echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/cadastrarUsuario.php'; </script>";
+            echo "<script>window.location='../Visao/cadastrarUsuario.php'; </script>";
             exit;    
         }
        return UsuarioDao::salvaUsuario($usuario);
@@ -25,7 +25,7 @@ class UsuarioControlador {
             $usuario = new Usuario($nome, $telefone, $email, $senha);
         }catch(Exception $e){
             print"<script>alert('".$e->getMessage()."')</script>";
-            echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/alteraUsuario.php'; </script>";
+            echo "<script>window.location='../Visao/alteraUsuario.php'; </script>";
             exit;    
         }
        return UsuarioDao::alteraUsuario($usuario,$id, $senhaVelha);
