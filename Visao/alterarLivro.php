@@ -4,7 +4,7 @@ $id_usuario = $_SESSION['id_usuario'];
 
 include '../Controle/LivroControlador.php';
 $id = $_REQUEST['id'];
-$listaLivros = LivroControlador::getLivroById($id);
+$livro = LivroControlador::getLivroById($id);
 
 $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que você escolheu as duas opções.";
 ?>
@@ -30,31 +30,31 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
                     <div class="form-group">
                         <label for="titulo" class="col-sm-2 control-label">Título</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título do livro" value="<?php echo $listaLivros['titulo_livro'] ?>" required/>
+                            <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título do livro" value="<?php echo $livro->getTitulo() ?>" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="autor" class="col-sm-2 control-label">Autor</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="autor" id="autor" placeholder="Autor principal do livro" value="<?php echo $listaLivros['autor'] ?>" required/>
+                            <input type="text" class="form-control" name="autor" id="autor" placeholder="Autor principal do livro" value="<?php echo $livro->getAutor() ?>" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="editora" class="col-sm-2 control-label">Editora</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="editora" id="editora" placeholder="Editora do livro" value="<?php echo $listaLivros['editora'] ?>" required/>
+                            <input type="text" class="form-control" name="editora" id="editora" placeholder="Editora do livro" value="<?php echo $livro->getEditora() ?>" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="edicao" class="col-sm-2 control-label">Edição</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" min="1" max="20" step="1" value="1" name="edicao" id="edicao" value="<?php echo $listaLivros['edicao'] ?>" required/>
+                            <input type="number" class="form-control" min="1" max="20" step="1" value="1" name="edicao" id="edicao" value="<?php echo $livro->getEdicao() ?>" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="descricao" class="col-sm-2 control-label">Descrição (opcional)</label>
                         <div class="col-sm-10">
-                            <input type="textarea" class="form-control" name="descricao" id="descricao" placeholder="Insira aqui uma breve descrição do livro" value="<?php echo $listaLivros['descricao_livro'] ?>"/>
+                            <input type="textarea" class="form-control" name="descricao" id="descricao" placeholder="Insira aqui uma breve descrição do livro" value="<?php echo $livro->getDescricao() ?>"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -102,21 +102,21 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
         <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
         <script>
             $(document).ready(function() {
-                document.getElementById('<?php echo $listaLivros['genero'];?>').checked = true;
-                document.getElementById('<?php echo $listaLivros['estado_conserv'];?>').checked = true;
+                document.getElementById('<?php echo $livro->getGenero();?>').checked = true;
+                document.getElementById('<?php echo $livro->getEstado();?>').checked = true;
                 <?php
-                    if(!empty($listaLivros['venda']) && empty($listaLivros['troca'])){
+                    if(!empty($livro->getVenda()) && empty($livro->getTroca())){
                 ?>
-                        document.getElementById('<?php echo $listaLivros['venda'];?>').checked = true;
+                        document.getElementById('<?php echo $livro->getVenda();?>').checked = true;
                 <?php
-                    }elseif(!empty($listaLivros['troca']) && empty($listaLivros['venda'])){
+                    }elseif(!empty($livro->getTroca()) && empty($livro->getVenda())){
                 ?>
-                        document.getElementById('<?php echo $listaLivros['troca'];?>').checked = true;
+                        document.getElementById('<?php echo $livro->getTroca();?>').checked = true;
                 <?php 
                     }else{
                 ?>
-                        document.getElementById('<?php echo $listaLivros['venda'];?>').checked = true;
-                        document.getElementById('<?php echo $listaLivros['troca'];?>').checked = true;
+                        document.getElementById('<?php echo $livro->getTroca();?>').checked = true;
+                        document.getElementById('<?php echo $livro->getVenda();?>').checked = true;
                 <?php 
                     }
                 ?>        

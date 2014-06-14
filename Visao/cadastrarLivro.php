@@ -21,7 +21,7 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
             <h2>Cadastrar livro</h2>
             <br><br>
             <div class="center-block" style="width: 68.66666666666667%;">
-                <form class="form-horizontal" name="FrmPesquisaLivro" action="../Utilidades/RecebeFormLivro.php" method="post" role="form">
+                <form class="form-horizontal" name="FrmCadastraLivro" action="../Utilidades/RecebeFormLivro.php" method="post" role="form">
                     <div class="form-group">
                         <label for="titulo" class="col-sm-2 control-label">Título</label>
                         <div class="col-sm-10">

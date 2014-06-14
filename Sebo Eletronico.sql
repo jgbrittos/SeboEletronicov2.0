@@ -1,13 +1,15 @@
+
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jul 15, 2013 as 01:54 
--- Versão do Servidor: 5.1.41
--- Versão do PHP: 5.3.1
+-- Tempo de Geração: 14/06/2014 às 18:05:50
+-- Versão do Servidor: 5.1.66
+-- Versão do PHP: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +18,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `sebo eletronico`
+-- Banco de Dados: `u367438131_sebo`
 --
 
 -- --------------------------------------------------------
@@ -38,17 +40,19 @@ CREATE TABLE IF NOT EXISTS `livro` (
   `venda` varchar(5) NOT NULL,
   `troca` varchar(5) NOT NULL,
   PRIMARY KEY (`id_livro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Tabela Relacionada ao Livro' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Tabela Relacionada ao Livro' AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `livro`
 --
 
 INSERT INTO `livro` (`id_livro`, `id_dono`, `titulo_livro`, `editora`, `autor`, `edicao`, `genero`, `estado_conserv`, `descricao_livro`, `venda`, `troca`) VALUES
-(1, 1, 'Calculo Exponencial', 'Friburgo', 'Seu Patinhas', 2, 'Engenharia de Pesca', 'NOVO', NULL, '', ''),
-(2, 1, 'Matematica Algebrica', 'Paramount', 'Silvio Santos', 5, 'TODAS', 'VELHO', 'Livro escrito pelo renomado autor de grandes best-sellers da literatura niponica', '', ''),
-(3, 3, 'Calculo1', 'Saraiva', 'Thomas', 2, 'Engenharia', 'usado', NULL, 'ok', ''),
-(4, 11, 'fisica', 'galileu', 'galileu', 1, 'Engenharia', 'usado', 'livro de fisica', 'ven', 'tro');
+(7, 11, 'Fundamentos de arquitetura de computadores', 'Prentice Hall', 'Taenembaum', 7, 'Engenharia de Software', 'novo', 'livro de FAC', '', 'troca'),
+(6, 11, 'Redes de computadores', 'Prentice Hall', 'Taenembaum', 5, 'Engenharia de Software', 'usado', 'livro muito bom de introdução a redes de computadores', 'venda', ''),
+(4, 11, 'fisica', 'galileu', 'galileu', 1, 'Engenharia', 'usado', 'livro de fisica', 'ven', 'tro'),
+(5, 12, 'Titulo', 'Editora', 'Autor', 1, 'Engenharia de Software', 'novo', 'Descricao', 'venda', 'troca'),
+(8, 11, 'Calculo 2', 'ABC paulista', 'George Thomas', 12, 'Engenharia', 'novo', 'livro de c2 do russo', 'venda', 'troca'),
+(9, 12, 'Livro 1', 'Panini', 'Fulano', 1, 'Engenharia', 'novo', 'Talz', 'venda', 'troca');
 
 -- --------------------------------------------------------
 
@@ -89,11 +93,6 @@ CREATE TABLE IF NOT EXISTS `relac_compra` (
   PRIMARY KEY (`id_compra`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Extraindo dados da tabela `relac_compra`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -105,14 +104,16 @@ CREATE TABLE IF NOT EXISTS `senha` (
   `codigo_senha` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_senha`),
   UNIQUE KEY `id_senha` (`id_senha`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Extraindo dados da tabela `senha`
 --
 
 INSERT INTO `senha` (`id_senha`, `codigo_senha`) VALUES
-(12, 123456);
+(12, 123456),
+(13, 654321),
+(14, 987654);
 
 -- --------------------------------------------------------
 
@@ -129,14 +130,16 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `id_usuario` (`id_usuario`),
   KEY `nome_usuario` (`nome_usuario`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Tabela Relacionada ao Usuario' AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Tabela Relacionada ao Usuario' AUTO_INCREMENT=14 ;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `senha_usuario`, `telefone_usuario`, `email_usuario`) VALUES
-(11, 'Joao', '12', 82235587, 'joao@gmail.com');
+(11, 'João Gabriel', '12', 82235587, 'joaogabrieldebrittoesilva@gmail.com'),
+(12, 'Caique', '13', 12345678, 'caiquepereira@gmail.com'),
+(13, 'Beatriz Rezener', '14', 82068271, 'beatrizrezener@gmail.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

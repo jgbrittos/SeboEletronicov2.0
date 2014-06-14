@@ -38,19 +38,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                     </td>
                 </tr>
             </table>
-            
-<!--            <h2>Deixe sua Opinião</h2>
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
-                fjs.parentNode.insertBefore(js, fjs);
-              }(document, 'script', 'facebook-jssdk'));
-            </script>  
-            <div class="fb-comments" data-href="seboeletronico.hol.es/Visao/indexLogin.php" data-width="760" data-numposts="10" data-colorscheme="light"></div>-->
-            
+                        
             <?php include_once '../Utilidades/Rodape.php'; ?>
         </div>
     </body>
