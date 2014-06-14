@@ -45,7 +45,7 @@
         document.FrmPesquisaPessoa.submit();
     }
 </script>
-<form  name="FrmPesquisaPessoa" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeForm.php" method="post">
+<form  name="FrmPesquisaPessoa" action="../Utilidades/RecebeForm.php" method="post">
     <input type="hidden" name="tipo" value="pesquisar"/>
     <input type="hidden" name="nome" />
 </form>
@@ -74,7 +74,7 @@
         document.FrmPesquisaLivro.submit();
     }
 </script>
-<form  name="FrmPesquisaLivro" action="http://localhost/SeboEletronicov2.0/Utilidades/RecebeFormLivro.php" method="post">
+<form  name="FrmPesquisaLivro" action="../Utilidades/RecebeFormLivro.php" method="post">
     <input type="hidden" name="tipo" value="pesquisaLivro"/>
     <input type="hidden" name="titulo" />
 </form>

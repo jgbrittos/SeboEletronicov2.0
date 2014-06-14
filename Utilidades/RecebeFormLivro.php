@@ -36,7 +36,7 @@ if(!empty($_POST['tipo'])) {
                 echo "<script>('Falha ao cadastrar o livro, tente novamente.')</script>";
             }
 
-            echo "<script>window.location='http://localhost/SeboEletronicov2.0/Visao/indexLogin.php';</script>";
+            echo "<script>window.location='../Visao/indexLogin.php';</script>";
 
             break;
 
@@ -71,7 +71,7 @@ if(!empty($_POST['tipo'])) {
             </script>  
 
             <script language = "Javascript">
-                window.location = "http://localhost/SeboEletronicov2.0/Visao/indexLogin.php";
+                window.location = "../Visao/indexLogin.php";
             </script><?php
             break;
 
@@ -111,7 +111,7 @@ if(!empty($_POST['tipo'])) {
                     document.FrmListaLivros.submit()
                 };
             </script>
-            <form name="FrmListaLivros" action="http://localhost/SeboEletronicov2.0/Visao/listaDeLivros.php" method="post">
+            <form name="FrmListaLivros" action="../Visao/listaDeLivros.php" method="post">
                 <input type="hidden" name="titulo" value="<?php echo $titulo;?>"/>
                 <!--<input type="hidden" name="novo" value="<?php //echo $estadoNovo;?>" />
                 <input type="hidden" name="usado" value="<?php //echo $estadoUsado;?>" />
@@ -131,7 +131,7 @@ if(!empty($_POST['tipo'])) {
                 </script>
 
                 <script language = "Javascript">
-                    window.location = "http://localhost/SeboEletronicov2.0/Visao/meusLivros.php";
+                    window.location = "../Visao/meusLivros.php";
                 </script><?php
             }
             break;

@@ -17,7 +17,7 @@ switch($_POST['tipo']){
                             </script>      
                             
                             <script language = "Javascript">
-                            window.location="http://localhost/SeboEletronicov2.0/Visao/entrarLogin.php";
+                            window.location="../Visao/entrarLogin.php";
                             </script>
                          <?php
                             
@@ -38,7 +38,7 @@ switch($_POST['tipo']){
                             </script>      
                             
                             <script language = "Javascript">
-                                window.location="http://localhost/SeboEletronicov2.0/Visao/indexLogin.php";
+                                window.location="../Visao/indexLogin.php";
                             </script>
                            
                         <?php
@@ -54,14 +54,14 @@ switch($_POST['tipo']){
                             </script>   
                             
                             <script language = "Javascript">
-                                window.location="http://localhost/SeboEletronicov2.0/index.php";
+                                window.location="../index.php";
                             </script>
                       <?php
                     break;
       case "pesquisar": $nome = $_POST['nome'];
                       ?>
                             <script language = "Javascript">
-                            window.location="http://localhost/SeboEletronicov2.0/Visao/usuarioPesquisado.php?nome=<?php echo $nome?>";
+                            window.location="../Visao/usuarioPesquisado.php?nome=<?php echo $nome?>";
                             </script><?php
             
                     break;
