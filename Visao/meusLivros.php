@@ -43,7 +43,7 @@ $listaLivros = LivroControlador::getLivroByIdUsuario($id);
                     <?php
                     if ($listaLivros) {
                         $i = 1;
-                        foreach ($listaLivros as $chave => $valor) {
+                        foreach ($listaLivros as $valor) {
                             $nomeModal = "modalExcluiLivro" . $i;
                             $i++;
                             ?>  
