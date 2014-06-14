@@ -18,9 +18,9 @@ if($row == $row2){
         $_SESSION['email']= $email;
         $_SESSION['senha']= $senha;
         $_SESSION['id_usuario'] = $idUsuario;
-        echo"<script>window.location='http://localhost/SeboEletronicov2.0/Visao/indexLogin.php'</script>";
+        echo"<script>window.location='../Visao/indexLogin.php'</script>";
     }
 }else{
         echo "<script>alert('Email de usuario ou senha invalido, tente novamente!')</script>";
-        echo "<script>window.location='http://localhost/SeboEletronicov2.0/index.php'</script>"; 
+        echo "<script>window.location='../index.php'</script>"; 
     }
