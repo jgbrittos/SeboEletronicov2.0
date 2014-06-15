@@ -5,7 +5,9 @@ include '../Controle/UsuarioControlador.php';
 $id_usuario = $_SESSION['id_usuario'];
 $senhaFinal = $_SESSION['senha'];
 
-$cadastro = UsuarioControlador::checaCadastroId($id_usuario);
+$usuarioControlador = new UsuarioControlador();
+$usuario = $usuarioControlador->pesquisaUsuarioPorParametro($id_usuario, "id_usuario");
+
 $textoInformativo = "Restaurar dados serve para redefinir os dados alterados não salvos aos que eram antes.";
 ?>
 <!DOCTYPE HTML>
@@ -29,19 +31,19 @@ $textoInformativo = "Restaurar dados serve para redefinir os dados alterados nã
                     <div class="form-group">
                         <label for="nome" class="col-sm-2 control-label">Nome</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control " name="nome" id="nome" placeholder="Nome" value="<?php echo $cadastro ['nome_usuario'] ?>" />
+                            <input type="text" class="form-control " name="nome" id="nome" placeholder="Nome" value="<?php echo $usuario->getNome(); ?>" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-2 control-label">E-mail</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $cadastro['email_usuario'] ?>"/>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $usuario->getEmail(); ?>"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="telefone" class="col-sm-2 control-label">Telefone</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" value="<?php echo $cadastro['telefone_usuario'] ?>"/>
+                            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" value="<?php echo $usuario->getTelefone();?>"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -79,7 +81,7 @@ $textoInformativo = "Restaurar dados serve para redefinir os dados alterados nã
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalNaoPublicarLabel">Caro <?php echo $cadastro['nome_usuario'] ?>, </h5>
+                        <h5 class="modal-title" id="modalNaoPublicarLabel">Caro <?php echo $usuario->getNome(); ?>, </h5>
                     </div>
                     <div class="modal-body">
                         <p style="text-align: left">
@@ -104,8 +106,7 @@ $textoInformativo = "Restaurar dados serve para redefinir os dados alterados nã
 
         <form class="form-horizontal" name="ExcluiUsuario" action="../Utilidades/RecebeForm.php" method="post" role="form">
             <input type="hidden" name="tipo" value="deletar"/>
-            <input type="hidden" name="email" value="<?php echo $cadastro['email_usuario'] ?>"/>
-            <input type="hidden" name="senha" value="<?php echo $senha ?>"/>
+            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>"/>
         </form>
 
         <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>

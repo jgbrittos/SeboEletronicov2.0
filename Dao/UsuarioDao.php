@@ -4,15 +4,17 @@ include "../Utilidades/ConexaoComBanco.php";
 
 class UsuarioDao {
 
-//    private function __construct() {}
-//
-//    //Singleton Pattern
-//    public static function getInstance() {
-//        if (!isset(self::$instance)) {
-//            self::$instance = new UsuarioDao();
-//        }
-//        return self::$instance;
-//    }
+    private static $instance;
+    
+    private function __construct() {}
+
+    //Singleton Pattern
+    public static function getInstance() {
+        if (!isset(self::$instance)) {
+            self::$instance = new UsuarioDao();
+        }
+        return self::$instance;
+    }
     
     public function salvaUsuario($usuario){
         $senhaAux = $usuario->getSenha();
@@ -68,26 +70,20 @@ class UsuarioDao {
         return $usuarios;
     }
     
-    public function deletaUsuario($email, $senha){
+    public function deletaUsuario($id_usuario){
                 
-        $sql="DELETE FROM usuario WHERE email_usuario = '".$email."'";
+        $sql="SELECT senha_usuario FROM usuario WHERE id_usuario = '".$id_usuario."'";
+        $senha = mysql_query($sql);
+        $senha = mysql_fetch_array($senha);
+        
+        $sql="DELETE FROM usuario WHERE id_usuario = '".$id_usuario."'";
         $deletouUsuario = mysql_query($sql);
 
-        $sql1="DELETE FROM senha WHERE codigo_senha = '".$senha."'";
-        $deleteouSenha = mysql_query($sql1);
+        $sql="DELETE FROM senha WHERE id_senha = '".$senha['senha_usuario']."'";
+        $deleteouSenha = mysql_query($sql);
         
         return ($deletouUsuario&&$deleteouSenha);
         
-    }
-
-    public function getCadastradosPorId($idPessoa){
-        
-        $sql="SELECT * FROM usuario WHERE id_usuario = '".$idPessoa."'";
-        $resultado = mysql_query($sql);
-        
-        $res = mysql_fetch_array($resultado);
-
-        return $res;
     }
 
     public function pesquisaUsuarioPorParametroDao($atributo, $tipo_Atributo){

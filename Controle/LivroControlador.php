@@ -17,25 +17,33 @@ class LivroControlador {
             echo "<script>window.location='../Visao/cadastrarLivro.php';</script>";
             exit;    
         }
-        return LivroDao::salvaLivro($livro, $id_dono);
+        $livroDao = LivroDao::getInstance();
+        return $livroDao->salvaLivro($livro, $id_dono);
     }
     
     public function pesquisaLivro($titulo){
-       
-        $listaLivrosMatriz = LivroDao::pesquisaLivroDao($titulo);
+        $livroDao = LivroDao::getInstance();
+        
+        $listaLivrosMatriz = $livroDao->pesquisaLivroDao($titulo);
+        
         $livros = Array();
+        
         foreach($listaLivrosMatriz as $livro){
             $livroObjeto = LivroControlador::criaObjetoLivro($livro['titulo_livro'], $livro['autor'], 
                 $livro['genero'], $livro['edicao'], $livro['editora'], $livro['venda'], 
                 $livro['troca'], $livro['estado_conserv'], $livro['descricao_livro']);
             array_push($livros, $livroObjeto);
         }
-        //var_dump($listaLivrosMatriz[2]['titulo_livro']);
+
         return $livros;
     }
     
     public function getLivroById($id){
-        $atributosLivro = LivroDao::getLivroById($id);
+        
+        $livroDao = LivroDao::getInstance();
+        
+        $atributosLivro = $livroDao->getLivroById($id);
+        
         $livro = LivroControlador::criaObjetoLivro($atributosLivro['titulo_livro'], $atributosLivro['autor'], 
                 $atributosLivro['genero'], $atributosLivro['edicao'], $atributosLivro['editora'], $atributosLivro['venda'], 
                 $atributosLivro['troca'], $atributosLivro['estado_conserv'], $atributosLivro['descricao_livro']);
@@ -62,12 +70,16 @@ class LivroControlador {
         return LivroDao::alteraLivro($livro, $id_dono, $id_usuario);
     }
     
-    public function getLivroByIdUsuario($idUsuario){
-        return LivroDao::getLivroByIdUsuario($idUsuario);
+    public function recuperaLivroPorIdUsuario($idUsuario){
+        $livroDao = LivroDao::getInstance();
+        
+        return $livroDao->recuperaLivroPorIdUsuarioDao($idUsuario);
     }
     
-    public function getAllLivro($id_dono){
-        return LivroDao::getAllLivro($id_dono);
+    public function pegaTodosLivros($id_dono){
+        $livroDao = LivroDao::getInstance();
+        
+        return $livroDao->pegaTodosLivrosDao($id_dono);
     }
     
     public function criaObjetoLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao){

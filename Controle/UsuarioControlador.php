@@ -4,6 +4,8 @@ include '../Modelo/Usuario.php';
 
 class UsuarioControlador {
     
+    public function __construct(){}
+    
     public function salvaUsuario($nome, $email, $telefone, $senha){
         try{
             $usuario = new Usuario($nome, $telefone, $email, $senha);
@@ -12,11 +14,9 @@ class UsuarioControlador {
             echo "<script>window.location='../Visao/cadastrarUsuario.php'; </script>";
             exit;    
         }
-       return UsuarioDao::salvaUsuario($usuario);
-    }
-
-    public function checaCadastroId($id){
-        return UsuarioDao::getCadastradosPorId($id);
+        $usuarioDao = UsuarioDao::getInstance();
+        
+        return $usuarioDao->salvaUsuario($usuario);
     }
 
     public function alterarCadastro($nome, $email, $telefone, $senha, $id, $senhaVelha){
@@ -32,9 +32,10 @@ class UsuarioControlador {
 
     }
 
-    public function deletaCadastro($email, $senha){
-
-        return UsuarioDao::deletaUsuario($email, $senha);
+    public function deletaCadastro($id_usuario){
+        $usuarioDao = UsuarioDao::getInstance();
+        
+        return $usuarioDao->deletaUsuario($id_usuario);
 
     }
 
@@ -43,9 +44,9 @@ class UsuarioControlador {
     } 
 
     public function pesquisaUsuarioPorParametro($atributo, $tipo_Atributo){
-        //$usuarioDao = UsuarioDao::getInstance();
-        $atributosUsuario = UsuarioDao::pesquisaUsuarioPorParametroDao($atributo, $tipo_Atributo);
-        $senhaParcial = (int) UsuarioControlador::getSenhaPorId($atributosUsuario['senha_usuario']);
+        $usuarioDao = UsuarioDao::getInstance();
+        $atributosUsuario = $usuarioDao->pesquisaUsuarioPorParametroDao($atributo, $tipo_Atributo);
+        $senhaParcial = (int) $this->getSenhaPorId($atributosUsuario['senha_usuario']);
         $senha = Array();
         $senha[0] = $senhaParcial;
         $senha[1] = $senhaParcial;

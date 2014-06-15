@@ -3,7 +3,9 @@ session_start();
 include '../Controle/LivroControlador.php';
 $id = $_SESSION['id_usuario'];
 
-$listaLivros = LivroControlador::getAllLivro($id);
+$livroControlador = new LivroControlador();
+
+$listaLivros = $livroControlador->pegaTodosLivros($id);
 ?>
 
 <html>

@@ -3,6 +3,18 @@ include "../Utilidades/ConexaoComBanco.php";
 
 class LivroDao {
     
+    private static $instance;
+    
+    private function __construct() {}
+
+    //Singleton Pattern
+    public static function getInstance() {
+        if (!isset(self::$instance)) {
+            self::$instance = new LivroDao();
+        }
+        return self::$instance;
+    }
+    
     public function salvaLivro($livro, $id_dono){
 
         $sql = "INSERT INTO livro (id_dono, titulo_livro, editora, autor, edicao, genero, estado_conserv, descricao_livro, venda, troca)
@@ -53,7 +65,7 @@ class LivroDao {
         return $livro;
     }   
     
-    public function getLivroByIdUsuario($idUsuario){
+    public function recuperaLivroPorIdUsuarioDao($idUsuario){
         
         $sql = "SELECT * FROM livro WHERE id_dono = '".$idUsuario."'";
         $result = mysql_query($sql);
@@ -71,7 +83,7 @@ class LivroDao {
         return $livros;
     }
     
-    public function getAllLivro($id_dono){
+    public function pegaTodosLivrosDao($id_dono){
         $sql = "SELECT * FROM livro WHERE id_dono <> '".$id_dono."'";
         $result = mysql_query($sql);
         

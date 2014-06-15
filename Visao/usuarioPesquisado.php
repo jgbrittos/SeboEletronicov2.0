@@ -3,7 +3,10 @@
     $id_usuario = $_SESSION['id_usuario'];
     include '../Controle/UsuarioControlador.php';
     $nome = $_REQUEST['nome'];
-    $pesquisado = UsuarioControlador::pesquisaUsuario($nome);
+    
+    $usuarioControlador = new UsuarioControlador();
+    
+    $pesquisado = $usuarioControlador->pesquisaUsuario($nome);
     
 ?>
 <!DOCTYPE HTML>
@@ -38,7 +41,7 @@
                     <?php
                     if ($pesquisado != false) {
                         $i = 0;
-                        foreach ($pesquisado as $chave => $valor) {
+                        foreach ($pesquisado as $valor) {
                             $i++;
                             ?>  
                             <tr>

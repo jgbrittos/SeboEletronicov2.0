@@ -3,10 +3,9 @@
 include '../Controle/LivroControlador.php';
 $titulo = $_POST['titulo'];
 
-$listaLivros = LivroControlador::pesquisaLivro($titulo);
+$livroControlador = new LivroControlador();
 
-//$livro = LivroControlador::getLivroById($id);
-
+$listaLivros = $livroControlador->pesquisaLivro($titulo);
 ?>
 
 <html>
@@ -35,9 +34,9 @@ $listaLivros = LivroControlador::pesquisaLivro($titulo);
                         <th>Editora</th>
                         <th>Edição</th>
                         <th>Descrição</th>
-                        <th>Tipo(s) de operação</th>
                         <th>Genero</th>
                         <th>Estado</th>
+                        <th>Tipo(s) de operação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,14 +50,14 @@ $listaLivros = LivroControlador::pesquisaLivro($titulo);
                                 <td><?php echo $livro->getEditora() ?></td>
                                 <td><?php echo $livro->getEdicao() ?></td>
                                 <td><?php echo $livro->getDescricao() ?></td>
+                                <td><?php echo $livro->getGenero() ?></td>
+                                <td><?php echo $livro->getEstado() ?></td>
                                 <td><?php
                                     echo $livro->getVenda();
                                     echo "<br/>";
                                     echo $livro->getTroca();
                                     ?>
                                 </td>
-                                <td><?php echo $livro->getGenero() ?></td>
-                                <td><?php echo $livro->getEstado() ?></td>
                             </tr>
                         <?php
                         }   

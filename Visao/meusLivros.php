@@ -2,8 +2,9 @@
 session_start();
 include '../Controle/LivroControlador.php';
 $id = $_SESSION['id_usuario'];
+$livroControlador = new LivroControlador();
 
-$listaLivros = LivroControlador::getLivroByIdUsuario($id);
+$listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
 ?>
 
 <html>

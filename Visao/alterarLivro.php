@@ -3,7 +3,9 @@ session_start();
 $id_usuario = $_SESSION['id_usuario'];
 
 include '../Controle/LivroControlador.php';
+
 $id = $_REQUEST['id'];
+
 $livro = LivroControlador::getLivroById($id);
 
 $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que você escolheu as duas opções.";

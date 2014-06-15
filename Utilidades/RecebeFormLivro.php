@@ -1,5 +1,6 @@
 <?php
 include_once '../Controle/LivroControlador.php';
+$livroControlador = new LivroControlador();
 
 if(!empty($_POST['tipo'])) {
     switch ($_POST['tipo']) {
@@ -8,6 +9,11 @@ if(!empty($_POST['tipo'])) {
             $autor = $_POST['autor'];
             $editora = $_POST['editora'];
             $edicao = $_POST['edicao'];
+            $genero = $_POST['genero'];
+            $estado = $_POST['estado'];
+            $descricao = $_POST['descricao'];
+            $id_dono = $_POST['id_dono'];
+            
             if(empty($_POST['venda']) && empty($_POST['troca'])){
                 $venda = "venda";
                 $troca = "troca";
@@ -21,14 +27,8 @@ if(!empty($_POST['tipo'])) {
                 $venda = $_POST['venda'];
                 $troca = $_POST['troca'];
             }
-            $genero = $_POST['genero'];
-            $estado = $_POST['estado'];
-            $descricao = $_POST['descricao'];
-            $id_dono = $_POST['id_dono'];
 
-
-            $salvo = LivroControlador::salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono);
-
+            $salvo = $livroControlador->salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono);
 
             if (!empty($salvo)) {
                 echo "<script>alert('Livro cadastrado com sucesso!')</script>";
@@ -64,7 +64,7 @@ if(!empty($_POST['tipo'])) {
             $id_dono = $_POST['id_dono'];
             $id = $_POST['id'];
 
-            LivroControlador::alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id, $id_dono);
+            $livroControlador->alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id, $id_dono);
             ?>
             <script language="Javascript" type="text/javascript">
                 alert("Livro alterado com sucesso!!");
@@ -93,7 +93,7 @@ if(!empty($_POST['tipo'])) {
         case "excluirLivro":
             if ($_REQUEST['id_livro']) {
                 $idLivro = $_REQUEST['id_livro'];
-                LivroControlador::deletaLivro($idLivro);
+                $livroControlador->deletaLivro($idLivro);
                 ?>
                 <script language="Javascript" type="text/javascript">
                     alert("Livro excluido com sucesso!!");

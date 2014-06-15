@@ -23,8 +23,10 @@
             $id_dono = $_POST['idDono'];
             $tituloLivro = $_POST['tituloLivro'];
             
-            $vendedor = UsuarioControlador::pesquisaUsuarioPorParametro($id_dono, "id_usuario");
-            $comprador = UsuarioControlador::pesquisaUsuarioPorParametro($id_usuario, "id_usuario");
+            $usuarioControlador = new UsuarioControlador();
+            
+            $vendedor = $usuarioControlador->pesquisaUsuarioPorParametro($id_dono, "id_usuario");
+            $comprador = $usuarioControlador->pesquisaUsuarioPorParametro($id_usuario, "id_usuario");
             
             $mensagem ='<html>
                             <body>
