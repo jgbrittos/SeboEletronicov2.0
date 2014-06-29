@@ -3,7 +3,7 @@
 include "../Utilidades/ConexaoComBanco.php";
 include_once '../Utilidades/LivroDao.php';
 
-class LivroFisicoDao implements LivroDao{
+class LivroFisicoDao extends LivroDao{
     
     private static $instance;
     
