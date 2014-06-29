@@ -28,7 +28,7 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Formato</th>
+<!--                        <th>Formato</th>-->
                         <th>Título</th>
                         <th>Autor</th>
                         <th>Editora</th>
@@ -53,12 +53,12 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
                                 <?php
                                     if(strcmp($valor['caminhoLivroEletronico'], 'NSA') == 0){ 
                                     ?>
-                                        <td>Físico</td>
+                                        <!--<td>Físico</td>-->
                                         <td><?php echo $valor['titulo_livro'] ?></td>
                                     <?php
                                     } else {
                                         ?>
-                                        <td>Digital</td>
+                                        <!--<td>Digital</td>-->
                                         <td><a href="<?php echo $valor['caminhoLivroEletronico'] ?>"><?php echo $valor['titulo_livro'] ?></a></td>
                                     <?php
                                     }
@@ -83,30 +83,37 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
                                 </td>
                             </tr>
                             <!-- Modal Excluir livro -->
-                        <div class="modal fade" id="<?php echo $nomeModal; ?>" tabindex="-1" role="dialog" aria-labelledby="modalExcluiLivroLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title" id="modalNaoPublicarLabel"><b>Atenção!</b></h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p style="text-align: left">
+                            <div class="modal fade" id="<?php echo $nomeModal; ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $nomeModal; ?>" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="modalNaoPublicarLabel"><b>Atenção!</b></h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p style="text-align: left">
+                                                <br />
+                                            <h4>Ao excluir este livro não será possível restaurá-lo.</h4>
                                             <br />
-                                        <h4>Ao excluir este livro não será possível restaurá-lo.</h4>
-                                        <br />
-                                        </p>
-                                        <p style="text-align: left; font-size: larger"><b>Deseja confirmar a exclusão?</b></p>
+                                            </p>
+                                            <p style="text-align: left; font-size: larger"><b>Deseja confirmar a exclusão?</b></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="excluiLivro(<?php echo $valor['id_livro']?>)">Confirmar</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="excluiLivro()">Confirmar</button>
-                                    </div>
+                                    <!-- /.modal-content -->
                                 </div>
-                                <!-- /.modal-content -->
+                                <!-- /.modal-dialog -->
                             </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
+                            <!-- /.modal -->
+                            <script>
+                                function excluiLivro(idlivro){
+                                    $("input[name=id_livroExcluir]").val(idlivro);
+                                    document.FrmExcluirLivro.submit();
+                                }
+                            </script>
+                            
                         <?php
                     }
                 } else {
@@ -119,13 +126,9 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
             ?>
         <?php //include_once '../Utilidades/Rodape.php'; ?>
         </div>
-        <script>
-            function excluiLivro(){
-                document.FrmExcluirLivro.submit()
-            }
-        </script>
-        <form  name="FrmExcluirLivro" action="../Utilidades/RecebeFormLivro.php?id_livro=<?php echo $valor['id_livro'] ?>" method="post">
+        <form name="FrmExcluirLivro" action="../Utilidades/RecebeFormLivro.php" method="post">
             <input type="hidden" name="tipo" value="excluirLivro"/>
+            <input type="hidden" name="id_livroExcluir"/>
         </form>
     </body>
 </html>
