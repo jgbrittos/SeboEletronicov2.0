@@ -28,23 +28,37 @@ class LivroControlador {
     
     public function pesquisaLivro($titulo){
         $livroFisicoDao = LivroFisicoDao::getInstance();
+        $livroEletronicoDao = LivroeletronicoDao::getInstance();
         
-        $listaLivrosMatriz = $livroFisicoDao->pesquisaLivroDao($titulo);
+        $listaLivrosFisicosMatriz = $livroFisicoDao->pesquisaLivro($titulo);
+        $listaLivrosEletronicoMatriz = $livroEletronicoDao->pesquisaLivro($titulo);
         
+        $livrosFisicos = Array();
+        $livrosEletronicos = Array();
         $livros = Array();
         
-        foreach($listaLivrosMatriz as $livro){
-            if(strcmp($livro['caminhoLivroEletronico'], 'NSA') == 0){
+        if(!empty($listaLivrosFisicosMatriz)){
+            foreach($listaLivrosFisicosMatriz as $livro){
                 $livroObjeto = LivroControlador::criaObjetoLivroFisico($livro['titulo_livro'], $livro['autor'], 
                 $livro['genero'], $livro['edicao'], $livro['editora'], $livro['venda'], 
                 $livro['troca'], $livro['estado_conserv'], $livro['descricao_livro']);
-            } else {
+
+                array_push($livrosFisicos, $livroObjeto);
+            }
+        }
+        
+        
+        if(!empty($listaLivrosEletronicoMatriz)){
+            foreach($listaLivrosEletronicoMatriz as $livro){
                 $livroObjeto = LivroControlador::criaObjetoLivroEletronico($livro['titulo_livro'], $livro['autor'], 
                 $livro['genero'], $livro['edicao'], $livro['editora'], $livro['descricao_livro'], $livro['caminhoLivroEletronico']);
-            }
-            array_push($livros, $livroObjeto);
-        }
 
+                array_push($livrosEletronicos, $livroObjeto);
+            }
+        }
+        array_push($livros, $livrosFisicos);
+        array_push($livros, $livrosEletronicos);
+                
         //return $listaLivrosMatriz;
         return $livros;
     }
