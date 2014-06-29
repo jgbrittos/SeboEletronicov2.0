@@ -76,7 +76,14 @@ class LivroControlador {
     
     public function deletaLivro($idLivro){
         $livroFisicoDao = LivroFisicoDao::getInstance();
-        return $livroFisicoDao->deletaLivro($idLivro);
+        
+        $caminho = $livroFisicoDao->defineTipoLivro($idLivro);
+        
+        if(strcmp($caminho['caminhoLivroEletronico'], 'NSA') != 0){
+            $retorno = unlink($caminho['caminhoLivroEletronico']);
+        }
+        
+        return $livroFisicoDao->deletaLivro($idLivro) && $retorno;
     }
 
     public function alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_livro){
