@@ -32,10 +32,6 @@ if(!empty($_POST['tipo'])) {
             if($tipoLivro == 'eletronico'){
                 // verifica se foi enviado um arquivo 
                 if(isset($_FILES['arquivo']['name']) && $_FILES["arquivo"]["error"] == 0) {
-                    /*echo "Você enviou o arquivo: <strong>" . $_FILES['arquivo']['name'] . "</strong><br />";
-                    echo "Este arquivo é do tipo: <strong>" . $_FILES['arquivo']['type'] . "</strong><br />";
-                    echo "Temporáriamente foi salvo em: <strong>" . $_FILES['arquivo']['tmp_name'] . "</strong><br />";
-                    echo "Seu tamanho é: <strong>" . $_FILES['arquivo']['size'] . "</strong> Bytes<br /><br />";*/
 
                     $arquivo_tmp = $_FILES['arquivo']['tmp_name'];
                     $nome = $_FILES['arquivo']['name'];
@@ -84,6 +80,12 @@ if(!empty($_POST['tipo'])) {
             $autor = $_POST['autor'];
             $editora = $_POST['editora'];
             $edicao = $_POST['edicao'];
+            $genero = $_POST['genero'];
+            $descricao = $_POST['descricao'];
+            $estado = $_POST['estado'];
+//            $id_dono = $_POST['id_dono'];
+            $id_livro = $_POST['id'];
+            
             if(empty($_POST['venda']) && empty($_POST['troca'])){
                 $venda = "venda";
                 $troca = "troca";
@@ -97,13 +99,9 @@ if(!empty($_POST['tipo'])) {
                 $venda = $_POST['venda'];
                 $troca = $_POST['troca'];
             }
-            $genero = $_POST['genero'];
-            $estado = $_POST['estado'];
-            $descricao = $_POST['descricao'];
-            $id_dono = $_POST['id_dono'];
-            $id = $_POST['id'];
+            
 
-            $livroControlador->alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id, $id_dono);
+            $livroControlador->alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_livro);
             ?>
             <script language="Javascript" type="text/javascript">
                 alert("Livro alterado com sucesso!!");
