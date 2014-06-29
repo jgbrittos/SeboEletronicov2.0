@@ -13,6 +13,7 @@ if(!empty($_POST['tipo'])) {
             $estado = $_POST['estado'];
             $descricao = $_POST['descricao'];
             $id_dono = $_POST['id_dono'];
+            $caminhoLivroEletronico = '';
             
             if(empty($_POST['venda']) && empty($_POST['troca'])){
                 $venda = "venda";
@@ -27,8 +28,44 @@ if(!empty($_POST['tipo'])) {
                 $venda = $_POST['venda'];
                 $troca = $_POST['troca'];
             }
+            
+            // verifica se foi enviado um arquivo 
+            if(isset($_FILES['arquivo']['name']) && $_FILES["arquivo"]["error"] == 0) {
+                /*echo "Você enviou o arquivo: <strong>" . $_FILES['arquivo']['name'] . "</strong><br />";
+                echo "Este arquivo é do tipo: <strong>" . $_FILES['arquivo']['type'] . "</strong><br />";
+                echo "Temporáriamente foi salvo em: <strong>" . $_FILES['arquivo']['tmp_name'] . "</strong><br />";
+                echo "Seu tamanho é: <strong>" . $_FILES['arquivo']['size'] . "</strong> Bytes<br /><br />";*/
 
-            $salvo = $livroControlador->salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono);
+                $arquivo_tmp = $_FILES['arquivo']['tmp_name'];
+                $nome = $_FILES['arquivo']['name'];
+
+                // Pega a extensao
+                $extensaoArquivo = strrchr($nome, '.');
+
+                // Converte a extensao para mimusculo
+                $extensao = strtolower($extensaoArquivo);
+
+                if(strstr('.pdf', $extensao)) {
+                    $novoNome = md5(microtime()) . $extensao;
+
+                    $caminhoLivroEletronico = '../livrosEmPdf/' . $novoNome; 
+                    $retorno = move_uploaded_file($arquivo_tmp, $caminhoLivroEletronico);
+                    // tenta mover o arquivo para o destino
+                    if(!$retorno){
+                        echo "<script>alert('Desculpe, mas um erro ocorreu ao tentar salvar o arquivo!')</script>";
+                        echo "<script>window.location='../Visao/cadastrarLivro.php';</script>";
+                        //Aparentemente você não tem permissão de escrita.";
+                    }
+                } else {
+                    echo "<script>alert('Você poderá enviar apenas arquivos \"*.pdf\')</script>";
+                    echo "<script>window.location='../Visao/cadastrarLivro.php';</script>";
+                }
+            } else {
+                echo "<script>alert('Você não selecionou nenhum arquivo!')</script>";
+                echo "<script>window.location='../Visao/cadastrarLivro.php';</script>";
+            }            
+            
+            $salvo = $livroControlador->salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $caminhoLivroEletronico, $id_dono);
 
             if (!empty($salvo)) {
                 echo "<script>alert('Livro cadastrado com sucesso!')</script>";
