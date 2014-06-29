@@ -26,8 +26,8 @@ class LivroFisicoDao implements LivroDao{
         return $livro;
     }
 
-    public function pesquisaLivroDao($titulo){
-        $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."'";
+    public function pesquisaLivro($titulo){
+        $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND caminhoLivroEletronico = 'NSA'";
         
         $result = mysql_query($sql);
         
@@ -100,10 +100,5 @@ class LivroFisicoDao implements LivroDao{
         
         return $livros;
     }
-
-    public function pesquisaLivro($titulo) {
-        
-    }
-
 }
 
