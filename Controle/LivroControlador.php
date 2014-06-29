@@ -6,6 +6,8 @@ include_once '../Dao/LivroFisicoDao.php';
 include_once '../Dao/LivroEletronicoDao.php';
     
 class LivroControlador {
+     
+    //FACADE ENTRE LIVRO CONTROLADOR, AS DUAS DAOS DE LIVRO E O RESTO DO SISTEMA
     
     public function salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $caminhoLivroEletronico, $id_dono){
         try{
@@ -112,6 +114,8 @@ class LivroControlador {
         
         return $livroFisicoDao->pegaTodosLivrosDao($id_dono);
     }
+    
+    //GRASP CRIADOR-ESPECIALISTA
     
     public function criaObjetoLivroFisico($titulo, $autor, $genero, $edicao, $editora, $descricao, $venda, $troca, $estado){
         $livro = new LivroFisico($titulo, $autor, $genero, $edicao, $editora, $descricao, $venda, $troca, $estado);

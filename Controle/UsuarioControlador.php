@@ -28,7 +28,9 @@ class UsuarioControlador {
             echo "<script>window.location='../Visao/alteraUsuario.php'; </script>";
             exit;    
         }
-       return UsuarioDao::alteraUsuario($usuario,$id, $senhaVelha);
+        $usuarioDao = UsuarioDao::getInstance();
+        
+        return $usuarioDao->alteraUsuario($usuario,$id, $senhaVelha);
 
     }
 
@@ -40,7 +42,8 @@ class UsuarioControlador {
     }
 
     public function pesquisaUsuario($nome){
-        return UsuarioDao::pesquisaUsuario($nome);
+        $usuarioDao = UsuarioDao::getInstance();
+        return $usuarioDao->pesquisaUsuario($nome);
     } 
 
     public function pesquisaUsuarioPorParametro($atributo, $tipo_Atributo){
@@ -54,21 +57,17 @@ class UsuarioControlador {
                 $atributosUsuario['telefone_usuario'], $atributosUsuario['email_usuario'], $senha);
         return $usuario;
     }
-    //possivel padrao GRASP Criador/Especialista
+    
+    //GRASP CRIADOR-ESPECIALISTA
+    
     public function criaObjetoUsuario($nome, $telefone, $email, $senha){
         $usuario = new Usuario($nome, $telefone, $email, $senha);
         return $usuario;
     }
 
     public function getSenhaPorId($id_senha){
-        $senha = UsuarioDao::getSenhaPorIdDao($id_senha);
+        $usuarioDao = UsuarioDao::getInstance();
+        $senha = $usuarioDao->getSenhaPorIdDao($id_senha);
         return $senha['codigo_senha'];
     } 
 }
-
-/*
-[mail function]
-; XAMPP: Comment out this if you want to work with an SMTP Server like Mercury
-; SMTP = localhost
-; smtp_port = 25
-*/
