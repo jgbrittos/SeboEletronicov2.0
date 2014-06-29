@@ -23,11 +23,12 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
         <div class="container">
             <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
             <br><br><br><br>
-            <h2>Meus livros</h2>
+            <h2>Meus livros</h2>            
             <br><br>
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>Formato</th>
                         <th>Título</th>
                         <th>Autor</th>
                         <th>Editora</th>
@@ -49,7 +50,19 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
                             $i++;
                             ?>  
                             <tr>
-                                <td><?php echo $valor['titulo_livro'] ?></td>
+                                <?php
+                                    if(strcmp($valor['caminhoLivroEletronico'], 'NSA') == 0){ 
+                                    ?>
+                                        <td>Físico</td>
+                                        <td><?php echo $valor['titulo_livro'] ?></td>
+                                    <?php
+                                    } else {
+                                        ?>
+                                        <td>Digital</td>
+                                        <td><a href="<?php echo $valor['caminhoLivroEletronico'] ?>"><?php echo $valor['titulo_livro'] ?></a></td>
+                                    <?php
+                                    }
+                                ?>
                                 <td><?php echo $valor['autor'] ?></td>
                                 <td><?php echo $valor['editora'] ?></td>
                                 <td><?php echo $valor['edicao'] ?></td>
@@ -104,7 +117,7 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
                 <?php
             }
             ?>
-        <?php include_once '../Utilidades/Rodape.php'; ?>
+        <?php //include_once '../Utilidades/Rodape.php'; ?>
         </div>
         <script>
             function excluiLivro(){
