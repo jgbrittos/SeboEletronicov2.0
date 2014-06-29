@@ -1,7 +1,7 @@
 <?php
 
-include '../Modelo/LivroFisico.php';
-include '../Modelo/Livroeletronico.php';
+include_once '../Modelo/LivroFisico.php';
+include_once '../Modelo/LivroEletronico.php';
 include_once '../Dao/LivroFisicoDao.php';
 include_once '../Dao/LivroEletronicoDao.php';
     
@@ -34,7 +34,7 @@ class LivroControlador {
         $livros = Array();
         
         foreach($listaLivrosMatriz as $livro){
-            $livroObjeto = LivroControlador::criaObjetoLivro($livro['titulo_livro'], $livro['autor'], 
+            $livroObjeto = LivroControlador::criaObjetoLivroFisico($livro['titulo_livro'], $livro['autor'], 
                 $livro['genero'], $livro['edicao'], $livro['editora'], $livro['venda'], 
                 $livro['troca'], $livro['estado_conserv'], $livro['descricao_livro']);
             array_push($livros, $livroObjeto);
@@ -76,9 +76,8 @@ class LivroControlador {
     }
     
     public function recuperaLivroPorIdUsuario($idUsuario){
-        $livroDao = LivroDao::getInstance();
-        
-        return $livroDao->recuperaLivroPorIdUsuarioDao($idUsuario);
+        $livroFisicoDao = LivroFisicoDao::getInstance();
+        return $livroFisicoDao->recuperaLivroPorIdUsuarioDao($idUsuario);
     }
     
     public function pegaTodosLivros($id_dono){
@@ -87,8 +86,8 @@ class LivroControlador {
         return $livroDao->pegaTodosLivrosDao($id_dono);
     }
     
-    public function criaObjetoLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao){
-        $livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
+    public function criaObjetoLivroFisico($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao){
+        $livro = new LivroFisico($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
         return $livro;
     }
 }
