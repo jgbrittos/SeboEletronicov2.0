@@ -47,7 +47,6 @@ class LivroControlador {
             }
         }
         
-        
         if(!empty($listaLivrosEletronicoMatriz)){
             foreach($listaLivrosEletronicoMatriz as $livro){
                 $livroObjeto = LivroControlador::criaObjetoLivroEletronico($livro['titulo_livro'], $livro['autor'], 
@@ -76,7 +75,8 @@ class LivroControlador {
     }
     
     public function deletaLivro($idLivro){
-        return LivroDao::deletaLivro($idLivro);
+        $livroFisicoDao = LivroFisicoDao::getInstance();
+        return $livroFisicoDao->deletaLivro($idLivro);
     }
 
     public function alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_livro){
