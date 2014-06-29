@@ -48,7 +48,17 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                                             }
                                             ?>
                                         </p>
-                                        <p><a class="btn btn-default" href="perfilLivro.php?id_livro=<?php echo $livro['id_livro']?>" role="button">Ver detalhes »</a></p><!--data-toggle="modal" data-target="#detalhesLivro echo $livro['id_livro'] "-->
+                                        <?php 
+                                            if(strcmp($livro['caminhoLivroEletronico'], 'NSA') == 0){                                                 
+                                        ?>
+                                                <p><a class="btn btn-default" href="perfilLivro.php?id_livro=<?php echo $livro['id_livro']?>" role="button">Ver detalhes »</a></p><!--data-toggle="modal" data-target="#detalhesLivro echo $livro['id_livro'] "-->
+                                        <?php                                                
+                                            } else {
+                                        ?>
+                                                <p><a class="btn btn-default" href='<?php echo $livro['caminhoLivroEletronico'];?>'>Ver livro »</a></p>
+                                        <?php
+                                            }
+                                        ?>
                                     </div>
                                     <div class="modal fade" id="detalhesLivro<?php echo $livro['id_livro']?>" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                                         <div class="modal-dialog">
