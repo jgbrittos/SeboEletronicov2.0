@@ -1,24 +1,29 @@
 <?php
 
-include '../Modelo/Livro.php';
+include '../Modelo/LivroFisico.php';
+include '../Modelo/Livroeletronico.php';
+include_once '../Dao/LivroFisicoDao.php';
+include_once '../Dao/LivroEletronicoDao.php';
     
 class LivroControlador {
     
-    public function salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono){
-       if(empty($venda) && empty($troca)){
-            $venda = "venda";
-            $troca = "troca";
-        }
-
+    public function salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $caminhoLivroEletronico, $id_dono){
         try{
-            $livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
+            if(empty($caminhoLivroEletronico)){
+                $livro = new LivroFisico($titulo, $autor, $genero, $edicao, $editora, $descricao,$venda, $troca, $estado);
+                $livroFisicoDao = LivroFisicoDao::getInstance();
+                $retorno = $livroFisicoDao->salvaLivro($livro, $id_dono);
+            }else{
+                $livro = new LivroEletronico($titulo, $autor, $genero, $edicao, $editora, $descricao,$caminhoLivroEletronico);
+                $livroEletronicoDao = LivroEletronicoDao::getInstance();
+                $retorno = $livroEletronicoDao->salvaLivro($livro, $id_dono);
+            }
         }catch(Exception $e){
             print"<script>alert('".$e->getMessage()."')</script>";
             echo "<script>window.location='../Visao/cadastrarLivro.php';</script>";
             exit;    
         }
-        $livroDao = LivroDao::getInstance();
-        return $livroDao->salvaLivro($livro, $id_dono);
+        return $retorno;
     }
     
     public function pesquisaLivro($titulo){
