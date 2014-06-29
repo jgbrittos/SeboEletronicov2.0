@@ -27,29 +27,35 @@ class LivroControlador {
     }
     
     public function pesquisaLivro($titulo){
-        $livroDao = LivroDao::getInstance();
+        $livroFisicoDao = LivroFisicoDao::getInstance();
         
-        $listaLivrosMatriz = $livroDao->pesquisaLivroDao($titulo);
+        $listaLivrosMatriz = $livroFisicoDao->pesquisaLivroDao($titulo);
         
         $livros = Array();
         
         foreach($listaLivrosMatriz as $livro){
-            $livroObjeto = LivroControlador::criaObjetoLivroFisico($livro['titulo_livro'], $livro['autor'], 
+            if(strcmp($livro['caminhoLivroEletronico'], 'NSA') == 0){
+                $livroObjeto = LivroControlador::criaObjetoLivroFisico($livro['titulo_livro'], $livro['autor'], 
                 $livro['genero'], $livro['edicao'], $livro['editora'], $livro['venda'], 
                 $livro['troca'], $livro['estado_conserv'], $livro['descricao_livro']);
+            } else {
+                $livroObjeto = LivroControlador::criaObjetoLivroEletronico($livro['titulo_livro'], $livro['autor'], 
+                $livro['genero'], $livro['edicao'], $livro['editora'], $livro['descricao_livro'], $livro['caminhoLivroEletronico']);
+            }
             array_push($livros, $livroObjeto);
         }
 
+        //return $listaLivrosMatriz;
         return $livros;
     }
     
     public function getLivroById($id){
         
-        $livroDao = LivroDao::getInstance();
+        $livroFisicoDao = LivroFisicoDao::getInstance();
         
-        $atributosLivro = $livroDao->getLivroById($id);
+        $atributosLivro = $livroFisicoDao->getLivroById($id);
         
-        $livro = LivroControlador::criaObjetoLivro($atributosLivro['titulo_livro'], $atributosLivro['autor'], 
+        $livro = LivroControlador::criaObjetoLivroFisico($atributosLivro['titulo_livro'], $atributosLivro['autor'], 
                 $atributosLivro['genero'], $atributosLivro['edicao'], $atributosLivro['editora'], $atributosLivro['venda'], 
                 $atributosLivro['troca'], $atributosLivro['estado_conserv'], $atributosLivro['descricao_livro']);
         return $livro;
@@ -88,6 +94,11 @@ class LivroControlador {
     
     public function criaObjetoLivroFisico($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao){
         $livro = new LivroFisico($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
+        return $livro;
+    }
+    
+    public function criaObjetoLivroEletronico($titulo, $autor, $genero, $edicao, $editora, $descricao, $caminhoDiretorio){
+        $livro = new LivroEletronico($titulo, $autor, $genero, $edicao, $editora, $descricao, $caminhoDiretorio);
         return $livro;
     }
 }
