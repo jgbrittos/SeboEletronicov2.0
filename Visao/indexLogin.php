@@ -20,7 +20,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
     
     <body>
         <div class="container">
-            <?php include_once '../Utilidades/BarraNavegacao.php'; ?>
+            <?php include_once '../Utilidades/BarraNavegacao.php';?>
             <br><br><br><br><br>
             <div align="center">
                 <font size="+3" style="font-family: verdana, sans-serif;">Seja Bem Vindo ao Sebo Eletrônico!</font>
