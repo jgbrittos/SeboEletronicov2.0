@@ -12,7 +12,6 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
         <link rel="stylesheet" href="Css/estilo.css"/>
         <script src="../Utilidades/Redireciona.js"></script> 
         <title>Sebo Eletrônico</title>
-
     </head>
     <body>
         <div class="container">
@@ -21,7 +20,7 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
             <h2>Cadastrar livro</h2>
             <br><br>
             <div class="center-block" style="width: 68.66666666666667%;">
-                <form class="form-horizontal" name="FrmCadastraLivro" action="../Utilidades/RecebeFormLivro.php" method="post" role="form">
+                <form class="form-horizontal" enctype="multipart/form-data" name="FrmCadastraLivro" action="../Utilidades/RecebeFormLivro.php" method="post" role="form">
                     <div class="form-group">
                         <label for="titulo" class="col-sm-2 control-label">Título</label>
                         <div class="col-sm-10">
@@ -52,14 +51,22 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
                             <input type="textarea" class="form-control" name="descricao" id="descricao" placeholder="Insira aqui uma breve descrição do livro"/>
                         </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="estado" class="col-sm-2 control-label">Estado</label>
+                        <label for="tipoLivro" class="col-sm-2 control-label">Tipo do livro</label>
                         <div class="col-sm-10">
-                            <input type="radio" name="estado" value="novo" checked/> Novo <br/>
-                            <input type="radio" name="estado" value="usado"/> Usado <br/>
+                            <input type="radio" class="livrofisico" data-tipoL="cadastraLivroFisico" onclick="teste()" name="tipoLivro" value="fisico" checked/> Físico <br/>
+                            <input type="radio" class="livroeletronico" data-tipoL="cadastraLivroEletronico" name="tipoLivro" value="eletronico" /> Eletrônico <br/>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="estadoLivroFisico">
+                        <label for="estado" class="col-sm-2 control-label">Estado</label>
+                        <div class="col-sm-10">
+                            <input type="radio" id="fisicoNovo" name="estado" value="novo" checked/> Novo <br/>
+                            <input type="radio" id="fisicoUsado" name="estado" value="usado"/> Usado <br/>
+                        </div>
+                    </div>
+                    <div class="form-group" id="operacaoLivroFisico">
                         <label for="classificacao" class="col-sm-2 control-label">Tipo(s) de operação</label>
                         <div class="col-sm-10">
                             <input type="checkbox" name="venda" value="venda" id="labelTipoOperacaoVenda" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<?php echo $textoInformativo; ?>" checked/> Venda <br/>
@@ -81,6 +88,7 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
                         <div class="col-sm-offset-2 col-sm-10">
                             <input type="hidden" name="tipo" value="cadastraLivro"/>
                             <input type="hidden" name="id_dono" value="<?php echo $id_usuario ?>"/>
+                            <input name="arquivo" id="arquivoEnviado" class="hide" type="file" /> <br>
                             <input class="btn btn-primary" type="submit" name='Cadastrar' value="Cadastrar" title='Cadastrar livro'/>
                             <input class="btn btn-default" id="limparDados" type="reset" name='Limpar' value="Limpar campos" />
                             <div class="pull-right">
@@ -90,13 +98,35 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
                     </div>
                 </form>
             </div>
-            <?php include_once '../Utilidades/Rodape.php'; ?>
+            <?php //include_once '../Utilidades/Rodape.php'; ?>
         </div>
         <script type="text/javascript" src="js/js/compressedProductionJquery.2.0.3.js"></script>
         <script type="text/javascript" src="js/js/bootstrap.3.0.3/bootstrap.js"></script>
         <script>
+            $('div').popover('show');        
             $('#labelTipoOperacaoVenda').popover('hide');
             $('#labelTipoOperacaoTroca').popover('hide');
+            
+            $(document).ready(function () {
+                $('.livroeletronico').on('click', function () {
+                    $('#estadoLivroFisico').addClass('hide');
+                    $('#operacaoLivroFisico').addClass('hide');            
+                    $('#arquivoEnviado').removeClass('hide');
+                });
+            });
+            
+            $(document).ready(function () {
+                $('.livrofisico').on('click', function () {
+                    $('#estadoLivroFisico').removeClass('hide');
+                    $('#operacaoLivroFisico').removeClass('hide');            
+                    $('#arquivoEnviado').addClass('hide');
+                });
+            });
+            
+            function teste(){
+                document.getElementById('estadoLivroFisico').style.display = 'block';
+                document.getElementById('operacaoLivroFisico').style.display = 'block';
+            }
         </script>
     </body>
 </html>
