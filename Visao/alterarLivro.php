@@ -4,9 +4,9 @@ $id_usuario = $_SESSION['id_usuario'];
 
 include '../Controle/LivroControlador.php';
 
-$id = $_REQUEST['id'];
+$id_livro = $_REQUEST['id_livro'];
 
-$livro = LivroControlador::getLivroById($id);
+$livro = LivroControlador::getLivroById($id_livro);
 
 $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que você escolheu as duas opções.";
 ?>
@@ -87,7 +87,7 @@ $textoInformativo = "Ao não marcar nenhuma das opções, será considerado que 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <input type="hidden" name="tipo" value="alterarLivro"/>
-                            <input type="hidden" name="id" value="<?php echo $id ?>"/>
+                            <input type="hidden" name="id" value="<?php echo $id_livro ?>"/>
                             <input type="hidden" name="id_dono" value="<?php echo $id_usuario ?>"/>
                             <input class="btn btn-primary" type="submit" name='Cadastrar' value="Cadastrar" title='Cadastrar livro'/>
                             <input class="btn btn-default" id="limparDados" type="reset" name='Limpar' value="Limpar campos" />
