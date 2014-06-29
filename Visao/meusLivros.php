@@ -76,7 +76,7 @@ $listaLivros = $livroControlador->recuperaLivroPorIdUsuario($id);
                                 <td><?php echo $valor['genero'] ?></td>
                                 <td><?php echo $valor['estado_conserv'] ?></td>
                                 <td>
-                                    <a href="../Visao/alterarLivro.php?id=<?php echo $valor['id_livro'] ?> " title="Alterar Livro"> <img src="img/icone_lapis.png" align="left"> </a> <br />
+                                    <a href="../Visao/alterarLivro.php?id_livro=<?php echo $valor['id_livro'] ?> " title="Alterar Livro"> <img src="img/icone_lapis.png" align="left"> </a> <br />
                                 </td>
                                 <td>
                                     <a data-toggle="modal" data-target="<?php echo "#" . $nomeModal ?>" href="#" title="Excluir Livro"> <img src="img/icone_lixeira.png" align="right" ></a>
