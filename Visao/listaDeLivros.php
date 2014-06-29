@@ -6,6 +6,8 @@ $titulo = $_POST['titulo'];
 $livroControlador = new LivroControlador();
 
 $listaLivros = $livroControlador->pesquisaLivro($titulo);
+$livrosFisicos = $listaLivros[0];
+$livrosEletronicos = $listaLivros[1];
 ?>
 
 <html>
@@ -28,6 +30,7 @@ $listaLivros = $livroControlador->pesquisaLivro($titulo);
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>Formato</th>
                         <th>Título</th>
                         <th>Autor</th>
                         <th>Editora</th>
@@ -41,9 +44,10 @@ $listaLivros = $livroControlador->pesquisaLivro($titulo);
                 <tbody>
                     <?php
                     if ($listaLivros) {
-                        foreach ($listaLivros as $livro) {
+                        foreach ($livrosFisicos as $livro) {
                             ?>
                             <tr>
+                                <td>Físico</td>
                                 <td><?php echo $livro->getTitulo() ?></td>
                                 <td><?php echo $livro->getAutor()?></td>
                                 <td><?php echo $livro->getEditora() ?></td>
@@ -59,7 +63,22 @@ $listaLivros = $livroControlador->pesquisaLivro($titulo);
                                 </td>
                             </tr>
                         <?php
-                        }   
+                        }
+                        foreach ($livrosEletronicos as $livro) {
+                            ?>
+                            <tr>
+                                <td>Eletrônico</td>
+                                <td><a href='<?php echo $livro->getCaminhoDiretorio()?>'><?php echo $livro->getTitulo() ?></a></td>
+                                <td><?php echo $livro->getAutor()?></td>
+                                <td><?php echo $livro->getEditora() ?></td>
+                                <td><?php echo $livro->getEdicao() ?></td>
+                                <td><?php echo $livro->getDescricao() ?></td>
+                                <td><?php echo $livro->getGenero() ?></td>
+                                <td><?php echo "Não se aplica" ?></td>
+                                <td><?php echo "Não se aplica";?> </td>
+                            </tr>
+                        <?php
+                        }
                     } else {
                     ?>
                     </tbody>
