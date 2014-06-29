@@ -4,7 +4,6 @@ include_once '../Utilidades/ExcessaoNomeInvalido.php';
 include_once '../Utilidades/ExcessaoTituloInvalido.php';
 include_once '../Utilidades/ExcessaoEditoraInvalida.php';
 include_once '../Utilidades/ValidaDados.php';
-include_once '../Dao/LivroDao.php';
 
 class Livro {
     
@@ -13,21 +12,14 @@ class Livro {
     private $genero;
     private $edicao;
     private $editora;
-    private $venda;
-    private $troca;
-    private $estado;
     private $descricao;
     
-    
-    function __construct($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao) {
+    function __construct($titulo, $autor, $genero, $edicao, $editora, $descricao) {
         $this->setTitulo($titulo);
         $this->setAutor($autor);
         $this->setGenero($genero);
         $this->setEdicao($edicao);
         $this->setEditora($editora);
-        $this->setVenda($venda);
-        $this->setTroca($troca);
-        $this->setEstado($estado);
         $this->setDescricao($descricao);
     }
     
@@ -67,22 +59,6 @@ class Livro {
 
     public function setGenero($genero) {
         $this->genero = $genero;
-    }
-
-    public function getTroca() {
-        return $this->troca;
-    }
-
-    public function setTroca($troca) {
-        $this->troca = $troca;
-    }
-    
-    public function getVenda() {
-        return $this->venda;
-    }
-
-    public function setVenda($venda) {
-        $this->venda = $venda;
     }
     
     public function getDescricao() {
@@ -124,60 +100,5 @@ class Livro {
             $this->editora = $editora;
         }
     }
-    
-    public function getEstado() {   
-        return $this->estado;
-    }
-   
-    public function setEstado($estado){
-        $this->estado = $estado;
-    }
-    
-//    public function salvaLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono){
-//        if(empty($venda) && empty($troca)){
-//            $venda = "venda";
-//            $troca = "troca";
-//        }
-//
-//        try{
-//            $livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
-//        }catch(Exception $e){
-//            print"<script>alert('".$e->getMessage()."')</script>";
-            
-//<!--<script language = "Javascript">
-//                    window.location="../Visao/cadastrarLivro.php";
-//                </script>-->
-            
-//            
-//            exit;    
-//        }
-//        return LivroDao::salvaLivro($livro->getTitulo(),$livro->getAutor(),$livro->getGenero(),$livro->getEdicao(), 
-//                $livro->getEditora(), $livro->getVenda(),$livro->getTroca(),$livro->getEstado(), 
-//                $livro->getDescricao(), $id_dono);
-//    }
-//    
-//    public function pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca){
-//        return LivroDao::pesquisaLivro($titulo, $estadoNovo, $estadoUsado, $disponibilidadeVenda, $disponibilidadeTroca);
-//    }
-//    
-//    public function getLivroById($id){
-//        return LivroDao::getLivroById($id);
-//    }
-//    
-//    public function deletaLivro($titulo){
-//        return LivroDao::deletaLivro($titulo);
-//    }
-//    
-//    public function alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id, $id_usuario){
-//        if(empty($venda) && empty($troca)){
-//            $venda = "venda";
-//            $troca = "troca";
-//        }
-//        $livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
-//        return LivroDao::alteraLivro($livro->getTitulo(),$livro->getAutor(),$livro->getGenero(),$livro->getEdicao(), $livro->getEditora(), 
-//                $livro->getVenda(),$livro->getTroca(),$livro->getEstado(), $livro->getDescricao(),$id, $id_usuario);
-//    }
-//
-    
+  
 }
-?>
