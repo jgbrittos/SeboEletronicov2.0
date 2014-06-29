@@ -77,22 +77,22 @@ class LivroControlador {
     
     public function deletaLivro($idLivro){
         return LivroDao::deletaLivro($idLivro);
-        }
-    
-    public function alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_dono, $id_usuario){
+    }
+
+    public function alteraLivro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao, $id_livro){
         if(empty($venda) && empty($troca)){
             $venda = "venda";
             $troca = "troca";
         }
 
         try{
-            $livro = new Livro($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
+            $livro = new LivroFisico($titulo, $autor, $genero, $edicao, $editora, $descricao, $venda, $troca, $estado);
         }catch(Exception $e){
             print"<script>alert('".$e->getMessage()."')</script>";
             echo "<script>window.location='../Visao/cadastrarLivro.php';</script>";
             exit;    
         }
-        return LivroDao::alteraLivro($livro, $id_dono, $id_usuario);
+        return LivroFisicoDao::alteraLivro($livro, $id_livro);
     }
     
     public function recuperaLivroPorIdUsuario($idUsuario){
