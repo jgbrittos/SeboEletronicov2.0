@@ -24,8 +24,27 @@ class LivroEletronicoDao implements LivroDao{
         $livro = mysql_query($sql);
         return $livro;
     }
-
+    
     public function alteraLivro($livro, $id_dono, $id_usuario) {
         
     }
+
+    public function pesquisaLivro($titulo) {
+        $sql = "SELECT * FROM livro WHERE titulo_livro = '".$titulo."' AND caminhoLivroEletronico <> 'NSA'";
+        
+        $result = mysql_query($sql);
+        
+        $livros = array();
+        
+        while($registro = mysql_fetch_assoc($result) ) {
+            array_push($livros, $registro);
+        }
+        
+        if(count($livros) == 0){
+            return false;
+        }
+        
+        return $livros;
+    }
+
 }
