@@ -128,8 +128,9 @@ if(!empty($_POST['tipo'])) {
             break;
         
         case "excluirLivro":
-            if ($_REQUEST['id_livro']) {
-                $idLivro = $_REQUEST['id_livro'];
+            if ($_POST['id_livroExcluir']) {
+                $idLivro = $_POST['id_livroExcluir'];
+                
                 $livroControlador->deletaLivro($idLivro);
                 ?>
                 <script language="Javascript" type="text/javascript">
