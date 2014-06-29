@@ -3,7 +3,7 @@
 include "../Utilidades/ConexaoComBanco.php";
 include_once '../Utilidades/LivroDao.php';
 
-class LivroEletronicoDao implements LivroDao{
+class LivroEletronicoDao extends LivroDao{
     
     private static $instance;
     
@@ -46,5 +46,4 @@ class LivroEletronicoDao implements LivroDao{
         
         return $livros;
     }
-
 }
