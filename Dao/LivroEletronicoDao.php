@@ -25,7 +25,7 @@ class LivroEletronicoDao implements LivroDao{
         return $livro;
     }
     
-    public function alteraLivro($livro, $id_dono, $id_usuario) {
+    public function alteraLivro($livro, $id_livro) {
         
     }
 
