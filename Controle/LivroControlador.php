@@ -81,9 +81,9 @@ class LivroControlador {
     }
     
     public function pegaTodosLivros($id_dono){
-        $livroDao = LivroDao::getInstance();
+        $livroFisicoDao = LivroFisicoDao::getInstance();
         
-        return $livroDao->pegaTodosLivrosDao($id_dono);
+        return $livroFisicoDao->pegaTodosLivrosDao($id_dono);
     }
     
     public function criaObjetoLivroFisico($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao){
