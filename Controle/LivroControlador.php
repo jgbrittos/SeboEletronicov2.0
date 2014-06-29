@@ -40,8 +40,8 @@ class LivroControlador {
         if(!empty($listaLivrosFisicosMatriz)){
             foreach($listaLivrosFisicosMatriz as $livro){
                 $livroObjeto = LivroControlador::criaObjetoLivroFisico($livro['titulo_livro'], $livro['autor'], 
-                $livro['genero'], $livro['edicao'], $livro['editora'], $livro['venda'], 
-                $livro['troca'], $livro['estado_conserv'], $livro['descricao_livro']);
+                $livro['genero'], $livro['edicao'], $livro['editora'], $livro['descricao_livro'], $livro['venda'], 
+                $livro['troca'], $livro['estado_conserv']);
 
                 array_push($livrosFisicos, $livroObjeto);
             }
@@ -106,8 +106,8 @@ class LivroControlador {
         return $livroFisicoDao->pegaTodosLivrosDao($id_dono);
     }
     
-    public function criaObjetoLivroFisico($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao){
-        $livro = new LivroFisico($titulo, $autor, $genero, $edicao, $editora, $venda, $troca, $estado, $descricao);
+    public function criaObjetoLivroFisico($titulo, $autor, $genero, $edicao, $editora, $descricao, $venda, $troca, $estado){
+        $livro = new LivroFisico($titulo, $autor, $genero, $edicao, $editora, $descricao, $venda, $troca, $estado);
         return $livro;
     }
     
