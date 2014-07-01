@@ -28,40 +28,75 @@
             $vendedor = $usuarioControlador->pesquisaUsuarioPorParametro($id_dono, "id_usuario");
             $comprador = $usuarioControlador->pesquisaUsuarioPorParametro($id_usuario, "id_usuario");
             
-            $mensagem ='<html>
+            //E-mail para o Vendedor com as informações do comprador e qual livro
+            
+            $mensagemParaVendedor ='<html>
                             <body>
                                 <table background = "http://i.imgur.com/GX69Php.jpg" height = "800" width=" 650" padding-top = "300" padding-right= "100" padding-bottom ="300" padding-left= "100">
                                     <tr>
                                         <td valign="top">
                                             <br><br><br><br><br><br><br><br><br><br><br><br>
                                             <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome do Livro: '.$tituloLivro.'</br></font>
-                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome do Comprador:'. $comprador->getNome(). '</br></font>
-                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:'.$comprador->getEmail().' </br></font>                          
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome do Comprador: '. $comprador->getNome(). '</br></font>
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telefone: '.$comprador->gettelefone().' </br></font>                          
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: '.$comprador->getEmail().' </br></font>                          
                                         </td>
                                     </tr>
                                 </table>		
                             </body>
                         </html>';
 
+            $subjectVendedor = 'Existe uma pessoa interessada em um livro seu!'; // Assunto.
+            $toVendedor = $vendedor->getEmail(); // Para.
+            $bodyVendedor = $mensagemParaVendedor; // corpo do texto.
+            $headersVendedor = 'From: Sebo Eletrônico <suporte@seboeletronico.hol.es>' . "\r\n";//de quem
+            $headersVendedor .= "Content-Type: text/html" . "\r\n";
+            $retornoEmailVendedor = mail($toVendedor,$subjectVendedor,$bodyVendedor,$headersVendedor);
+            
+            //E-mail para o Comprador com as informações do vendedor e qual livro
+            
+            $mensagemParaComprador ='<html>
+                            <body>
+                                <table background = "http://i.imgur.com/GX69Php.jpg" height = "800" width=" 650" padding-top = "300" padding-right= "100" padding-bottom ="300" padding-left= "100">
+                                    <tr>
+                                        <td valign="top">
+                                            <br><br><br><br><br><br><br><br><br><br><br><br>
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome do Livro: '.$tituloLivro.'</br></font>
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome do Dono do livro: '. $vendedor->getNome(). '</br></font>
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telefone: '.$vendedor->getTelefone().' </br></font>                          
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: '.$vendedor->getEmail().' </br></font>                          
+                                        </td>
+                                    </tr>
+                                </table>		
+                            </body>
+                        </html>';
 
-            $subject= 'Existe uma pessoa interessada em um livro seu!'; // Assunto.
-            $to= $vendedor->getEmail(); // Para.
-            $body= $mensagem; // corpo do texto.
-            $headers = 'From: Sebo Eletrônico <suporte@seboeletronico.hol.es>' . "\r\n";//de quem
-            $headers .= "Content-Type: text/html" . "\r\n";
-
-            if (mail($to,$subject,$body,$headers)){
+            $subjectComprador = 'Olá! Parece que você gostou de algum Livro do Sebo Eletrônico!'; // Assunto.
+            $toComprador = $comprador->getEmail(); // Para.
+            $bodyComprador = $mensagemParaVendedor; // corpo do texto.
+            $headersComprador = 'From: Sebo Eletrônico <suporte@seboeletronico.hol.es>' . "\r\n";//de quem
+            $headersComprador .= "Content-Type: text/html" . "\r\n";
+            $retornoEmailComprador = mail($toComprador,$subjectComprador,$bodyComprador,$headersComprador);
+            
+            if ($retornoEmailVendedor && $retornoEmailComprador){
                 //echo 'E-mail enviado com sucesso!';
                 ?>
                 <div class="modal fade" id="deucerto" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-body">
-                                <h5 class="modal-title"><b></b>E-mail enviado com sucesso!</h5><br>
+                            <div class="modal-header">
+                                <h3 class="modal-title"><b>E-mail enviado com sucesso!</b></h3>
                             </div>
-
+                            <div class="modal-body">
+                                <h5 class="modal-title">
+                                    <ol>
+                                        <li>Um e-mail foi enviado para você com as informações de contato do dono do livro: <?php echo $tituloLivro?></li>
+                                        <li>Um e-mail foi enviado para o dono do livro, com as suas informações de contato.</li>
+                                    </ol>
+                                </h5>
+                            </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default center-block" data-dismiss="modal" onclick="window.location='livrosDisponiveis.php'">Ok</button>
+                                <button type="button" class="btn btn-success center-block" data-dismiss="modal" onclick="window.location='livrosDisponiveis.php'">Ok</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
