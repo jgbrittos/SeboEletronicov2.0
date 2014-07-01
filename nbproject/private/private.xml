@@ -3,6 +3,9 @@
     <coverage xmlns="http://www.netbeans.org/ns/code-coverage/1" enabled="false"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Controle/LivroControlador.php</file>
+            <file>file:/C:/xampp/htdocs/SeboEletronicov2.0/Controle/UsuarioControlador.php</file>
+        </group>
     </open-files>
 </project-private>
