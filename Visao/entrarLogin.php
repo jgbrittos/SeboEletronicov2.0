@@ -13,7 +13,8 @@
         <div class="container login" style="padding: 30px;">
             <div class="col-md-4 col-md-offset-4 well-lg login">
                 <div class="formLogin">
-                    <img src="img/sebo_header.png"/>
+                    <!--<img src="img/sebo_header.png"/>-->
+                    <h3>Login</h3>
                     <form name="FrmLogin" method="post" action="../Dao/AutenticaUsuario.php" id="FrmLogin" class="form-horizontal" role="form">
                         <input name="email" type="text" class="form-control" placeholder="E-mail" required/>
                         <input name="senha" type="password" class="form-control" placeholder="Senha"  maxlength="6" required/>
