@@ -32,7 +32,9 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                     <div class="row">
                         <?php 
                             if ($listaLivros) {
-                                foreach ($listaLivros as $livro) {?>
+                                foreach ($listaLivros as $livro) {
+                                    $nomeForm = "document.FrmComprarLivro".$livro['id_livro'].".submit()";
+                                    ?>
                                     <div class="col-6 col-sm-6 col-lg-4" style="width: 292px; height: 297px;">
                                         <h3><?php echo $livro['titulo_livro'] ?></h3>
                                         <p style="text-align: justify">
@@ -60,6 +62,10 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                                             }
                                         ?>
                                     </div>
+                                    <form name="FrmComprarLivro<?php echo $livro['id_livro']?>" action="../Visao/compralivro.php" method="post">
+                                        <input type="hidden" name="idDono" value="<?php echo $livro['id_dono'];?>"/>
+                                        <input type="hidden" name="tituloLivro" value="<?php echo $livro['titulo_livro']?>"/>
+                                    </form>
                                     <div class="modal fade" id="detalhesLivro<?php echo $livro['id_livro']?>" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -89,7 +95,7 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                                                     </script>  
                                                     <div class="fb-comments" data-href="seboeletronico.hol.es/Visao/perfilLivro.php?id_livro=<?php echo $livro['id_livro'];?>" data-width="578" data-numposts="10" data-colorscheme="light"></div>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal" onclick="disparaform()">Negociar</button>
+                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal" onclick="<?php echo $nomeForm ?>">Negociar</button>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
@@ -97,11 +103,6 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                                         <!-- /.modal-dialog -->
                                     </div>
                                     <!-- /.modal -->
-                                    <script>
-                                        function disparaform() {
-                                            document.FrmComprarLivro.submit();
-                                        }
-                                    </script>
                         <?php 
                                 }
                             }else{
@@ -114,11 +115,6 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                 </div>
             </div>
             <?php //include_once '../Utilidades/Rodape.php'; ?>
-        </div>
-        
-        <form  name="FrmComprarLivro" action="../Visao/compralivro.php" method="post">
-            <input type="hidden" name="idDono" value="<?php echo $livro['id_dono'];?>"/>
-            <input type="hidden" name="tituloLivro" value="<?php echo $livro['titulo_livro']?>"/>
-        </form>
+        </div>        
     </body>
 </html>
