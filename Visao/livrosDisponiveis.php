@@ -51,7 +51,7 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                                         <?php 
                                             if(strcmp($livro['caminhoLivroEletronico'], 'NSA') == 0){                                                 
                                         ?>
-                                                <p><a class="btn btn-default" href="perfilLivro.php?id_livro=<?php echo $livro['id_livro']?>" role="button">Ver detalhes »</a></p><!--data-toggle="modal" data-target="#detalhesLivro echo $livro['id_livro'] "-->
+                                                <p><a class="btn btn-default" data-toggle="modal" data-target="#detalhesLivro<?php echo $livro['id_livro']?> " role="button">Ver detalhes »</a></p><!--href="perfilLivro.php?id_livro=<?php //echo $livro['id_livro']?>" data-toggle="modal" data-target="#detalhesLivro echo $livro['id_livro'] "-->
                                         <?php                                                
                                             } else {
                                         ?>
@@ -77,8 +77,19 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                                                 </div>
                                                 
                                                 <div class="modal-footer">
+                                                    <h5 style="text-align: center">Deixe sua Opinião</h5>
+                                                    <div id="fb-root"></div>
+                                                    <script>(function(d, s, id) {
+                                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                                        if (d.getElementById(id)) return;
+                                                        js = d.createElement(s); js.id = id;
+                                                        js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
+                                                        fjs.parentNode.insertBefore(js, fjs);
+                                                      }(document, 'script', 'facebook-jssdk'));
+                                                    </script>  
+                                                    <div class="fb-comments" data-href="seboeletronico.hol.es/Visao/perfilLivro.php?id_livro=<?php echo $livro['id_livro'];?>" data-width="578" data-numposts="10" data-colorscheme="light"></div>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal" onclick="disparaform()">Comprar</button>
+                                                    <button type="button" id="pesquisar" class="btn btn-primary" data-dismiss="modal" onclick="disparaform()">Negociar</button>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
