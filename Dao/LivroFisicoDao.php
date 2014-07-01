@@ -4,7 +4,7 @@ include "../Utilidades/ConexaoComBanco.php";
 include_once '../Utilidades/LivroDao.php';
 
 class LivroFisicoDao extends LivroDao{
-    
+    //GRASP - Inheritance
     private static $instance;
     
     private function __construct() {}
