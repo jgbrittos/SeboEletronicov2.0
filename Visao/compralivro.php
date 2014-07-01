@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML>
 <html>
 <head>	
@@ -18,7 +19,6 @@
         <?php 
             include_once '../Controle/UsuarioControlador.php';
             
-            session_start();
             $id_usuario = $_SESSION['id_usuario'];
             $id_dono = $_POST['idDono'];
             $tituloLivro = $_POST['tituloLivro'];
@@ -51,7 +51,28 @@
             $headers .= "Content-Type: text/html" . "\r\n";
 
             if (mail($to,$subject,$body,$headers)){
-                echo 'E-mail enviado com sucesso!';
+                //echo 'E-mail enviado com sucesso!';
+                ?>
+                <div class="modal fade" id="deucerto" tabindex="-1" role="dialog" aria-labelledby="modalPesquisaPessoaLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h5 class="modal-title"><b></b>E-mail enviado com sucesso!</h5><br>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default center-block" data-dismiss="modal" onclick="window.location='livrosDisponiveis.php'">Ok</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <script>
+                    $('#deucerto').modal('show');
+                </script>
+                <?php
             } else {
                 echo 'Algo ocorreu! :( E-mail não enviado!';
             }
