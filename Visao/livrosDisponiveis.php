@@ -27,7 +27,7 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                 <div class="col-xs-12 col-sm-9">
                     <div class="jumbotron ">
                         <h2>Livros disponíveis</h2>
-                        <p>Aqui você pode acompanhar todos os livros disponíveis para venda e troca.</p>
+                        <p>Aqui você pode acompanhar todos os livros disponíveis para venda, troca e download.</p>
                     </div>
                     <div class="row">
                         <?php 
