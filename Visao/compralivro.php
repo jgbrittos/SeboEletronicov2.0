@@ -38,7 +38,7 @@
                                             <br><br><br><br><br><br><br><br><br><br><br><br>
                                             <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome do Livro: '.$tituloLivro.'</br></font>
                                             <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nome do Comprador: '. $comprador->getNome(). '</br></font>
-                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telefone: '.$comprador->gettelefone().' </br></font>                          
+                                            <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telefone: '.$comprador->getTelefone().' </br></font>                          
                                             <br><font color = "#FFFFFF" size = "6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: '.$comprador->getEmail().' </br></font>                          
                                         </td>
                                     </tr>
