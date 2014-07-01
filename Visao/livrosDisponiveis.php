@@ -32,8 +32,11 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                     <div class="row">
                         <?php 
                             if ($listaLivros) {
+                                include_once '../Controle/UsuarioControlador.php';
+                                $usuarioControlador = new UsuarioControlador();
                                 foreach ($listaLivros as $livro) {
                                     $nomeForm = "document.FrmComprarLivro".$livro['id_livro'].".submit()";
+                                    $donoDoLivro = $usuarioControlador->pesquisaUsuarioPorParametro($livro['id_dono'], "id_usuario");
                                     ?>
                                     <div class="col-6 col-sm-6 col-lg-4" style="width: 292px; height: 297px;">
                                         <h3><?php echo $livro['titulo_livro'] ?></h3>
@@ -70,20 +73,24 @@ $listaLivros = $livroControlador->pegaTodosLivros($id);
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h3 class="modal-title" name="titulo" id="detalhesLivroLabel"><b> <?php echo $livro['titulo_livro'] ?> </b></h3>
+                                                    <h3 class="modal-title"><b>Informações do dono do livro.</b></h3><br>
+                                                    <h5 class="modal-title"><b>Nome do dono:</b> <?php echo $donoDoLivro->getNome(); ?></h5>
+                                                    <h5 class="modal-title"><b>Telefone:</b> <?php echo $donoDoLivro->getTelefone(); ?></h5>
+                                                    <h5 class="modal-title"><b>E-mail:</b> <?php echo $donoDoLivro->getEmail(); ?></h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Autor:</b> <?php echo $livro['autor'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Editora:</b> <?php echo $livro['editora'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Edição:</b> <?php echo $livro['edicao'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Descrição:</b> <?php echo $livro['descricao_livro'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Tipo(s) de operação:</b> <?php echo $livro['venda'] . '<br>' . $livro['troca'];?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Gênero:</b> <?php echo $livro['genero'] ?></h5><br>
-                                                    <h5 class="modal-title" id="detalhesLivroLabel"><b>Estado:</b> <?php echo $livro['estado_conserv'] ?></h5><br>
+                                                    <h3 class="modal-title"><b>Informações do livro.</b></h3><br>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel1"><b>Título:</b> <?php echo $livro['titulo_livro'] ?></h5>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel1"><b>Autor:</b> <?php echo $livro['autor'] ?></h5>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel2"><b>Editora:</b> <?php echo $livro['editora'] ?></h5>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel3"><b>Edição:</b> <?php echo $livro['edicao'] ?></h5>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel4"><b>Descrição:</b> <?php echo $livro['descricao_livro'] ?></h5>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel5"><b>Tipo(s) de operação:</b> <?php echo $livro['venda'] .', '. $livro['troca'];?></h5>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel6"><b>Gênero:</b> <?php echo $livro['genero'] ?></h5>
+                                                    <h5 class="modal-title" id="detalhesLivroLabel7"><b>Estado:</b> <?php echo $livro['estado_conserv'] ?></h5><br>
                                                 </div>
-                                                
                                                 <div class="modal-footer">
-                                                    <h5 style="text-align: center">Deixe sua Opinião</h5>
+                                                    <h5 style="text-align: center"><b>Deixe sua Opinião</b></h5>
                                                     <div id="fb-root"></div>
                                                     <script>(function(d, s, id) {
                                                         var js, fjs = d.getElementsByTagName(s)[0];
