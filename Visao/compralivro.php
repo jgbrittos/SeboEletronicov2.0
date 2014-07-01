@@ -51,7 +51,6 @@
             $bodyVendedor = $mensagemParaVendedor; // corpo do texto.
             $headersVendedor = 'From: Sebo Eletrônico <suporte@seboeletronico.hol.es>' . "\r\n";//de quem
             $headersVendedor .= "Content-Type: text/html" . "\r\n";
-            $retornoEmailVendedor = mail($toVendedor,$subjectVendedor,$bodyVendedor,$headersVendedor);
             
             //E-mail para o Comprador com as informações do vendedor e qual livro
             
@@ -73,9 +72,11 @@
 
             $subjectComprador = 'Olá! Parece que você gostou de algum Livro do Sebo Eletrônico!'; // Assunto.
             $toComprador = $comprador->getEmail(); // Para.
-            $bodyComprador = $mensagemParaVendedor; // corpo do texto.
+            $bodyComprador = $mensagemParaComprador; // corpo do texto.
             $headersComprador = 'From: Sebo Eletrônico <suporte@seboeletronico.hol.es>' . "\r\n";//de quem
             $headersComprador .= "Content-Type: text/html" . "\r\n";
+            
+            $retornoEmailVendedor = mail($toVendedor,$subjectVendedor,$bodyVendedor,$headersVendedor);
             $retornoEmailComprador = mail($toComprador,$subjectComprador,$bodyComprador,$headersComprador);
             
             if ($retornoEmailVendedor && $retornoEmailComprador){
